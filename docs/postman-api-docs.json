@@ -1,0 +1,1337 @@
+{
+	"info": {
+		"_postman_id": "7ba7cb9c-9b59-49a8-8a3e-63535335cc05",
+		"name": "132nd Web API",
+		"description": "Web API for the 132nd vWing Community",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"_postman_id": "ebcf0e00-c827-48c3-90f1-135cd9dbed6c",
+			"name": "Private Routes",
+			"item": [
+				{
+					"_postman_id": "736cf26c-e5fe-4194-a932-650cc98bb47e",
+					"name": "Users",
+					"item": [
+						{
+							"_postman_id": "2a7435d3-6f9c-4fbe-bbfe-f9b027b1a19f",
+							"name": "users/current",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM5NzM0OCwiZXhwIjoxNTMwNDAwOTQ4fQ.SzYu_QZDQOdQ5qmMvsGjXXYUa43SgIAJXlEW-it7EN0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/users/current",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"users",
+										"current"
+									]
+								},
+								"description": "Get the current logged in user's data"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "eea30dd5-ed38-4ad3-8793-f69c8b59ed46",
+					"name": "Profile",
+					"item": [
+						{
+							"_postman_id": "be44d5aa-9fee-42b1-ad67-2a6fda18a4ac",
+							"name": "profile/",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM5NzM0OCwiZXhwIjoxNTMwNDAwOTQ4fQ.SzYu_QZDQOdQ5qmMvsGjXXYUa43SgIAJXlEW-it7EN0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										""
+									]
+								},
+								"description": "Get the current users profile"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "1f333ae9-6185-4e1d-9ee7-62fa39603ac1",
+							"name": "profile/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM1OTk2MiwiZXhwIjoxNTMwMzYzNTYyfQ.UwTLmZaNhTHv5_7XLyu31EUWjzeLzIVfjyW81TkVlZE"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "handle",
+											"value": "johndoe",
+											"description": "A user-selectable handle that can be used to access that users profile directly",
+											"type": "text"
+										},
+										{
+											"key": "status",
+											"value": "active",
+											"description": "Profile status, either active or inactive",
+											"type": "text"
+										},
+										{
+											"key": "skills",
+											"value": "skill1,skill2,skill3,skill4",
+											"description": "Optional comma-seperated list of users skills (tags)",
+											"type": "text"
+										},
+										{
+											"key": "bio",
+											"value": "Lorem ipsum...",
+											"description": "An optional text about the user",
+											"type": "text"
+										},
+										{
+											"key": "githubusername",
+											"value": "superkid99",
+											"description": "The user can opt to input his github user, so that the profile can show git repos",
+											"type": "text"
+										},
+										{
+											"key": "youtube",
+											"value": "www.youtube.com/superkid99",
+											"description": "Optional input for social media",
+											"type": "text"
+										},
+										{
+											"key": "twitch",
+											"value": "www.twitch.com/superkid99",
+											"description": "Optional input for social media",
+											"type": "text"
+										},
+										{
+											"key": "twitter",
+											"value": "www.twitch.com/superkid99",
+											"description": "Optional input for social media",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/profile",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile"
+									]
+								},
+								"description": "Creates or Updates the users profile"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b66773bb-243b-4d0a-aa1e-ab0bdf9746f0",
+							"name": "profile/",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM5NzM0OCwiZXhwIjoxNTMwNDAwOTQ4fQ.SzYu_QZDQOdQ5qmMvsGjXXYUa43SgIAJXlEW-it7EN0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										""
+									]
+								},
+								"description": "Delete current logged in user and profile"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "3ded0278-667e-4ee4-baf8-92459c61de38",
+							"name": "profile/experience",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM1OTk2MiwiZXhwIjoxNTMwMzYzNTYyfQ.UwTLmZaNhTHv5_7XLyu31EUWjzeLzIVfjyW81TkVlZE"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "Senior Developer",
+											"description": "Job title",
+											"type": "text"
+										},
+										{
+											"key": "company",
+											"value": "Techdude Web Solutions",
+											"description": "Company",
+											"type": "text"
+										},
+										{
+											"key": "from",
+											"value": "2010-02-04",
+											"description": "Start date",
+											"type": "text"
+										},
+										{
+											"key": "to",
+											"value": "2015-04-05",
+											"description": "End date",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Lorem Ipsum...",
+											"description": "Job description",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/profile/experience",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"experience"
+									]
+								},
+								"description": "Adds a new experience to the users profile"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "fc84c6ad-973f-42f1-bdfc-56849d34a737",
+							"name": "profile/experience/:exp_id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM5NzM0OCwiZXhwIjoxNTMwNDAwOTQ4fQ.SzYu_QZDQOdQ5qmMvsGjXXYUa43SgIAJXlEW-it7EN0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/experience/:exp_id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"experience",
+										":exp_id"
+									],
+									"variable": [
+										{
+											"key": "exp_id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Delete experience from profile"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "0c0ffeb7-a2fb-407c-b232-82923dfefa3d",
+							"name": "profile/education",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM1OTk2MiwiZXhwIjoxNTMwMzYzNTYyfQ.UwTLmZaNhTHv5_7XLyu31EUWjzeLzIVfjyW81TkVlZE"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "school",
+											"value": "Wings High College",
+											"description": "School Name",
+											"type": "text"
+										},
+										{
+											"key": "degree",
+											"value": "Masters",
+											"description": "Degree",
+											"type": "text"
+										},
+										{
+											"key": "fieldofstudy",
+											"value": "Mechanical Engineering",
+											"description": "Field of Study",
+											"type": "text"
+										},
+										{
+											"key": "from",
+											"value": "2008-02-04",
+											"description": "Start date",
+											"type": "text"
+										},
+										{
+											"key": "to",
+											"value": "2010-01-01",
+											"description": "End date",
+											"type": "text"
+										},
+										{
+											"key": "description",
+											"value": "Lorem Ipsum...",
+											"description": "Course description",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/profile/education",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"education"
+									]
+								},
+								"description": "Adds a new education to the users profile"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "436ecc2f-8bd3-48cc-bf77-72db7bf5a29e",
+							"name": "profile/education/:edu_id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzc3MDI1ODRlOGM1MWM3YzAwYjVjNSIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDM5NzM0OCwiZXhwIjoxNTMwNDAwOTQ4fQ.SzYu_QZDQOdQ5qmMvsGjXXYUa43SgIAJXlEW-it7EN0"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/education/:edu_id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"education",
+										":edu_id"
+									],
+									"variable": [
+										{
+											"key": "edu_id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Delete education from profile"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "6c7d1622-953c-4a92-ad23-aaedaa41fd47",
+					"name": "Posts",
+					"item": [
+						{
+							"_postman_id": "1f38b297-dce8-4046-85db-5153472144b2",
+							"name": "posts/",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzhhM2RmYmQ3YzAzMmFiNDY1MmM0ZiIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDQzODcwMCwiZXhwIjoxNTMwNDQyMzAwfQ.kwwo1xe1LPF8zsqAeDPJpIg90nIZ9HLBOJ1vZg4p7vY"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "type",
+											"value": "notam",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "title",
+											"value": "",
+											"description": "Optional",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "my first post!",
+											"description": "Required",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "John Doe",
+											"description": "Usualy this will be the user that posted",
+											"type": "text"
+										},
+										{
+											"key": "avatar",
+											"value": "www.someavatar.com/picture",
+											"description": "The users avatar - in case account is deleted",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/posts/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										""
+									]
+								},
+								"description": "Create a new post"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b385314e-c0bd-472b-b7ec-a85cfa97d83a",
+							"name": "posts/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzYzN2U5OWZhNWQzMGY2NGE2NWM3NyIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJpYXQiOjE1MzA0MzAxMDQsImV4cCI6MTUzMDQzMzcwNH0.Xho1_xdPbMTdFEuZALOwT7zI6fQosHVHex2cqYPWi00"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/posts/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Delete a post"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "f2b56de4-489f-4fb0-a003-f0321adafa3d",
+							"name": "posts/like/:id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzYzN2U5OWZhNWQzMGY2NGE2NWM3NyIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJpYXQiOjE1MzA0MzkwNjEsImV4cCI6MTUzMDQ0MjY2MX0.e_CP6LhUlw6Wg91XRKYZWZYwBQU2TeIe3baI3-GUCkg"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/posts/like/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										"like",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Like a post"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "e5f51d77-5714-48f2-8d09-bc3a02d37640",
+							"name": "posts/unlike/:id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzYzN2U5OWZhNWQzMGY2NGE2NWM3NyIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJpYXQiOjE1MzA0MzkwNjEsImV4cCI6MTUzMDQ0MjY2MX0.e_CP6LhUlw6Wg91XRKYZWZYwBQU2TeIe3baI3-GUCkg"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/posts/unlike/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										"unlike",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Unlike a post"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "cb1a9b5b-d235-41fc-af1a-dcc18fcb65b4",
+							"name": "posts/comment/:id",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzhhM2RmYmQ3YzAzMmFiNDY1MmM0ZiIsIm5hbWUiOiJKb2huIERvZSIsImF2YXRhciI6IiIsImlhdCI6MTUzMDQzOTcwMywiZXhwIjoxNTMwNDQzMzAzfQ.V0ZV7kMBWhZRdG1vKQ1DyXqkkycA5mINaK2KLaVn6Ss"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "text",
+											"value": "Nice post bro!",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "John Doe",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/posts/comment/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										"comment",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Add comment to a post"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "91ce295d-b966-4976-b8f4-8bea916672c5",
+							"name": "posts/comment/:id/:comment_id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViMzYzN2U5OWZhNWQzMGY2NGE2NWM3NyIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJpYXQiOjE1MzA0MzkwNjEsImV4cCI6MTUzMDQ0MjY2MX0.e_CP6LhUlw6Wg91XRKYZWZYwBQU2TeIe3baI3-GUCkg"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/posts/comment/:id/:comment_id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										"comment",
+										":id",
+										":comment_id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										},
+										{
+											"key": "comment_id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Remove a comment from a post"
+							},
+							"response": []
+						}
+					],
+					"description": "Protected routes for the posts endpoint",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "7d103fe9-be1b-4b7f-8efd-3c2cb01fd5b1",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "6aa512f8-a9dd-48d9-9af6-e1fd259b141f",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "d1502e9c-4bd8-4e0d-b817-49329d50e71e",
+					"name": "Notams",
+					"item": [
+						{
+							"_postman_id": "b7311429-4b51-4ad1-87f2-d57f66a6fe8d",
+							"name": "notams",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDY2NjcyNGQxZWVmMGE0NDBkYzY2OCIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJyb2xlcyI6WyJjb21tYW5kIiwiaW5zdHJ1Y3RvciIsIjEzMm5kIiwiNDk0dGgiXSwiaWF0IjoxNTMxNzc2Mjg0LCJleHAiOjE1MzE3Nzk4ODR9.GH2KVKCZfKhZgM2BHCk4aRYGhgRyhCPLBcoyKZCIWZc"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "This is an important NOTAM",
+											"description": "Optional",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "Some notam content here",
+											"description": "Required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/notams/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"notams",
+										""
+									]
+								},
+								"description": "Create a new NOTAM"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "3ac2e231-e96c-45a5-a70e-bcd3c19f41b0",
+							"name": "notams",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDY2NjcyNGQxZWVmMGE0NDBkYzY2OCIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJyb2xlcyI6WyJjb21tYW5kIiwiaW5zdHJ1Y3RvciIsIjEzMm5kIiwiNDk0dGgiXSwiaWF0IjoxNTMxNzc5Mzg2LCJleHAiOjE1MzE3ODI5ODZ9.FmrFz39Q0EaK9dUwuZW9rG7rHMjhTlP1iwAdsGogAqM"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "A third NOTAM",
+											"description": "Optional",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "Some really important info here...",
+											"description": "Required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/notams/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"notams",
+										""
+									]
+								},
+								"description": "Create a new NOTAM"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "88c6809b-7688-48a4-81aa-b62ae8eff4ab",
+							"name": "notams/test",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDY2NjcyNGQxZWVmMGE0NDBkYzY2OCIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJpYXQiOjE1MzE3NjgzNTEsImV4cCI6MTUzMTc3MTk1MX0.pi0ydELv0UIoTutQzAyMR9wKh78DNhCluQJILt7JzRY"
+									},
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "title",
+											"value": "This is an important NOTAM",
+											"description": "Optional",
+											"type": "text"
+										},
+										{
+											"key": "text",
+											"value": "Some notam content here",
+											"description": "Required",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/notams/test",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"notams",
+										"test"
+									]
+								},
+								"description": "Test the end-point"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "b3a189c3-2624-4544-abd3-dbeef0908176",
+							"name": "notams/unread",
+							"request": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDY2NjcyNGQxZWVmMGE0NDBkYzY2OCIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJyb2xlcyI6WyJjb21tYW5kIiwiaW5zdHJ1Y3RvciIsIjEzMm5kIiwiNDk0dGgiXSwiaWF0IjoxNTMxODY0Mzc1LCJleHAiOjE1MzE4Njc5NzV9.JrDZkDGW49X7NO0Vm45FoxR9KPnTFPrJ8Ys8zi34F-0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/notams/unread",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"notams",
+										"unread"
+									]
+								},
+								"description": "Set a post as read - remove it from the profile's unread list"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "6ef69bf2-91e4-462b-868b-f00de0082f7b",
+							"name": "notams/unread/:id",
+							"request": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjViNDY2NjcyNGQxZWVmMGE0NDBkYzY2OCIsIm5hbWUiOiJCZW4gRG92ZXIiLCJhdmF0YXIiOiIiLCJyb2xlcyI6WyJjb21tYW5kIiwiaW5zdHJ1Y3RvciIsIjEzMm5kIiwiNDk0dGgiXSwiaWF0IjoxNTMxODY0Mzc1LCJleHAiOjE1MzE4Njc5NzV9.JrDZkDGW49X7NO0Vm45FoxR9KPnTFPrJ8Ys8zi34F-0"
+									}
+								],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/notams/unread/5b4e3dac59bcd24934c3f90b",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"notams",
+										"unread",
+										"5b4e3dac59bcd24934c3f90b"
+									]
+								},
+								"description": "Set a post as read - remove it from the profile's unread list"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Routes requiring an authorized user and roles",
+			"auth": {
+				"type": "basic",
+				"basic": [
+					{
+						"key": "password",
+						"value": "123123",
+						"type": "string"
+					},
+					{
+						"key": "username",
+						"value": "john@doe.com",
+						"type": "string"
+					}
+				]
+			},
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "c6c4b5ee-2ba5-4820-bb7b-0d18001a925f",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "e56691e0-dff0-4db0-b32d-37365decaead",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		},
+		{
+			"_postman_id": "6c4597d1-3500-4b76-afcf-b6ff5036c68c",
+			"name": "Public Routes",
+			"item": [
+				{
+					"_postman_id": "83099466-2d7c-4336-a84c-27a066e807ff",
+					"name": "Users",
+					"item": [
+						{
+							"_postman_id": "7ede10f2-0ab6-4f01-b678-09c6632ca31e",
+							"name": "users/test",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/users/test",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"users",
+										"test"
+									]
+								},
+								"description": "Returns a string if the end-point is working"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "7b22ece8-8efe-475a-b54e-157b5d4a2f13",
+							"name": "users/login",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "email",
+											"value": "ben@dover.com",
+											"description": "User email",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "123123",
+											"description": "User password",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/users/login",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"users",
+										"login"
+									]
+								},
+								"description": "User login"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "a77f802c-4818-4dfc-ad55-1f9c89e2d064",
+							"name": "users/register",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Content-Type",
+										"value": "application/x-www-form-urlencoded"
+									}
+								],
+								"body": {
+									"mode": "urlencoded",
+									"urlencoded": [
+										{
+											"key": "name",
+											"value": "John Doe",
+											"description": "New users name",
+											"type": "text"
+										},
+										{
+											"key": "email",
+											"value": "john@doe.com",
+											"description": "New users email",
+											"type": "text"
+										},
+										{
+											"key": "password",
+											"value": "testtest",
+											"description": "New users email",
+											"type": "text"
+										},
+										{
+											"key": "password2",
+											"value": "testtest",
+											"description": "Confirmation of new users email",
+											"type": "text"
+										}
+									]
+								},
+								"url": {
+									"raw": "localhost:5000/api/users/register",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"users",
+										"register"
+									]
+								},
+								"description": "Register a new user"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "0807b384-1b9a-4133-a106-15b4a93325e6",
+					"name": "Profile",
+					"item": [
+						{
+							"_postman_id": "df643879-1181-4928-94e4-a251be165fe8",
+							"name": "profile/test",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/test",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"test"
+									]
+								},
+								"description": "Returns a string if the end-point is working"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "1ee46fd2-173c-4ef6-a156-627ebdfa16f2",
+							"name": "profile/handle/all",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/all",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"all"
+									]
+								},
+								"description": "Get all profiles"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "ee88851c-ee42-429c-87d4-73beef5b5233",
+							"name": "profile/handle/:handle",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/handle/:handle",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"handle",
+										":handle"
+									],
+									"variable": [
+										{
+											"key": "handle",
+											"value": ""
+										}
+									]
+								},
+								"description": "Get profile by handle"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "bcfb987d-b72b-4da7-abf6-36419c7158ef",
+							"name": "profile/user/:user_id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/profile/user/:user_id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"profile",
+										"user",
+										":user_id"
+									],
+									"variable": [
+										{
+											"key": "user_id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Get profile by user ID"
+							},
+							"response": []
+						}
+					],
+					"_postman_isSubFolder": true
+				},
+				{
+					"_postman_id": "db936d93-1d8c-462d-a9d9-01f95a841d94",
+					"name": "Posts",
+					"item": [
+						{
+							"_postman_id": "079afff2-9cc7-4692-9fa2-fa79c2aecc5f",
+							"name": "posts/test",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/posts/test",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										"test"
+									]
+								},
+								"description": "Returns a string if the end-point is working"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "f34b94dd-91f1-408c-b92f-dee8e90025db",
+							"name": "posts/",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/posts/",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										""
+									]
+								},
+								"description": "Gets all posts"
+							},
+							"response": []
+						},
+						{
+							"_postman_id": "48454b75-a2b2-4de1-a7de-e4130bbe4a73",
+							"name": "posts/:id",
+							"request": {
+								"method": "GET",
+								"header": [],
+								"body": {},
+								"url": {
+									"raw": "localhost:5000/api/posts/:id",
+									"host": [
+										"localhost"
+									],
+									"port": "5000",
+									"path": [
+										"api",
+										"posts",
+										":id"
+									],
+									"variable": [
+										{
+											"key": "id",
+											"value": ""
+										}
+									]
+								},
+								"description": "Gets post by id"
+							},
+							"response": []
+						}
+					],
+					"description": "Publically avilable routes for the posts endpoint",
+					"event": [
+						{
+							"listen": "prerequest",
+							"script": {
+								"id": "fc4a5f8e-39ea-4ad1-9c36-99cb32cee36e",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						},
+						{
+							"listen": "test",
+							"script": {
+								"id": "c54fd940-05a1-4bab-bcbb-6d9512b82dfa",
+								"type": "text/javascript",
+								"exec": [
+									""
+								]
+							}
+						}
+					],
+					"_postman_isSubFolder": true
+				}
+			],
+			"description": "Routes open to unauthorized users",
+			"event": [
+				{
+					"listen": "prerequest",
+					"script": {
+						"id": "d0c6a729-8b72-4c00-83cc-f2e1e52a7e07",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				},
+				{
+					"listen": "test",
+					"script": {
+						"id": "680f3929-bd33-4a90-bb87-dcd7b6233c2b",
+						"type": "text/javascript",
+						"exec": [
+							""
+						]
+					}
+				}
+			]
+		}
+	]
+}
