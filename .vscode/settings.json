@@ -1,0 +1,16 @@
+{
+  "prettier.jsxSingleQuote": true,
+  "prettier.singleQuote": true,
+  "prettier.arrowParens": "always",
+  "prettier.eslintIntegration": true,
+  "prettier.endOfLine": "lf",
+  "prettier.jsxBracketSameLine": true,
+  "prettier.trailingComma": "all",
+  "prettier.printWidth": 100,
+  "prettier.semi": true,
+  "editor.formatOnSave": true,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "eslint.alwaysShowStatus": true,
+  "files.eol": "\n"
+}
