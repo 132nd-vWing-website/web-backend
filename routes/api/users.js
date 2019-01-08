@@ -53,16 +53,20 @@ router.post('/register', (req, res) => {
 
     // .. hash the password and then save the user to the db
     bcrypt.genSalt(10, (err, salt) => {
-      bcrypt.hash(newUser.password, salt, (err, hash) => {
-        if (err) throw err;
+      bcrypt.hash(newUser.password, salt, (_err, hash) => {
+        if (_err) throw _err;
         newUser.password = hash;
         newUser
           .save()
-          .then((user) => res.json(user))
-          .catch((err) => console.log(err));
+          .then((_user) => res.json(_user))
+          .catch((__err) => console.log(__err));
       });
     });
+
+    return null;
   });
+
+  return null;
 });
 
 // @route   POST api/users/login
@@ -77,8 +81,9 @@ router.post('/login', (req, res) => {
   }
 
   // Find the user by email...
-  const email = req.body.email;
-  const password = req.body.password;
+  // const email = req.body.email;
+  // const password = req.body.password;
+  const { email, password } = req.body;
 
   User.findOne({ email }).then((user) => {
     // .. check for user
@@ -116,8 +121,14 @@ router.post('/login', (req, res) => {
         errors.password = 'Password incorrect';
         return res.status(400).json(errors);
       }
+
+      return null;
     });
+
+    return null;
   });
+
+  return null;
 });
 
 // @route   GET api/users/current
