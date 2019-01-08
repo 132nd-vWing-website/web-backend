@@ -17,6 +17,10 @@
     "type": "git",
     "url": "git+https://github.com/132nd-vWing-website/web-backend"
   },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/132nd-vWing-website/web-backend/issues"
+  },
   "dependencies": {
     "@sanity/client": "^0.132.5",
     "@sanity/image-url": "^0.132.5",
