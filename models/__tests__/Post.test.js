@@ -1,14 +1,19 @@
-const mongoose = require("mongoose");
+/* eslint no-undef: 0 */
+
+const mongoose = require('mongoose');
 
 // TestDB (Needs to be in your keys_dev.js!)
-const testDB = require("../config/keys_test").mongoURI;
+const testDB = require('../../config/keys_test').mongoURI;
 
-mongoose.connect(testDB, { useNewUrlParser: true });
+mongoose.connect(
+  testDB,
+  { useNewUrlParser: true },
+);
 
 // Schema
-const Post = require("./Post");
+const Post = require('../Post');
 
-describe("User Model", () => {
+describe('User Model', () => {
   // Clear the test database schema before we start
   beforeAll(async () => {
     await Post.remove({});
@@ -24,47 +29,47 @@ describe("User Model", () => {
     await mongoose.connection.close();
   });
 
-  it("has a model", () => {
+  it('has a model', () => {
     expect(Post).toBeDefined();
   });
 
-  describe("Get post", () => {
-    it("gets a post", async () => {
+  describe('Get post', () => {
+    it('gets a post', async () => {
       const testPost = new Post({
-        type: "test-post",
-        title: "Some Post Title",
-        text: "Some post text"
+        type: 'test-post',
+        title: 'Some Post Title',
+        text: 'Some post text',
       });
       await testPost.save();
-      const foundPost = await Post.findOne({ type: "test-post" });
+      const foundPost = await Post.findOne({ type: 'test-post' });
       expect(foundPost.type).toEqual(testPost.type);
     });
   });
 
-  describe("Save post", () => {
-    it("saves a post", async () => {
+  describe('Save post', () => {
+    it('saves a post', async () => {
       const testPost = new Post({
-        type: "test-post",
-        title: "Some Post Title",
-        text: "Some post text"
+        type: 'test-post',
+        title: 'Some Post Title',
+        text: 'Some post text',
       });
       const savedPost = await testPost.save();
       expect(savedPost.type).toEqual(testPost.type);
     });
   });
 
-  describe("Update post", () => {
-    it("updates a post", async () => {
+  describe('Update post', () => {
+    it('updates a post', async () => {
       const testPost = new Post({
-        type: "test-post",
-        title: "Some Post Title",
-        text: "Some post text"
+        type: 'test-post',
+        title: 'Some Post Title',
+        text: 'Some post text',
       });
       await testPost.save();
 
-      testPost.text = "some brand new text";
+      testPost.text = 'some brand new text';
       const updatedPost = await testPost.save();
-      expect(updatedPost.text).toEqual("some brand new text");
+      expect(updatedPost.text).toEqual('some brand new text');
     });
   });
 });

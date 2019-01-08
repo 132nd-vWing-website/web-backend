@@ -1,14 +1,18 @@
-const mongoose = require("mongoose");
+/* eslint no-undef: 0 */
+const mongoose = require('mongoose');
 
 // TestDB (Needs to be in your keys_dev.js!)
-const testDB = require("../config/keys_test").mongoURI;
+const testDB = require('../../config/keys_test').mongoURI;
 
-mongoose.connect(testDB, { useNewUrlParser: true });
+mongoose.connect(
+  testDB,
+  { useNewUrlParser: true },
+);
 
 // Schema
-const User = require("./User");
+const User = require('../User');
 
-describe("User Model", () => {
+describe('User Model', () => {
   // Clear the test database schema before we start
   beforeAll(async () => {
     await User.remove({});
@@ -24,47 +28,47 @@ describe("User Model", () => {
     await mongoose.connection.close();
   });
 
-  it("has a model", () => {
+  it('has a model', () => {
     expect(User).toBeDefined();
   });
 
-  describe("Get user", () => {
-    it("gets a user", async () => {
+  describe('Get user', () => {
+    it('gets a user', async () => {
       const testUser = new User({
-        name: "foo",
-        email: "test@user.com",
-        password: "123456"
+        name: 'foo',
+        email: 'test@user.com',
+        password: '123456',
       });
       await testUser.save();
-      const foundUser = await User.findOne({ name: "foo" });
+      const foundUser = await User.findOne({ name: 'foo' });
       expect(foundUser.name).toEqual(testUser.name);
     });
   });
 
-  describe("Save user", () => {
-    it("saves a user", async () => {
+  describe('Save user', () => {
+    it('saves a user', async () => {
       const testUser = new User({
-        name: "foo",
-        email: "test@user.com",
-        password: "123456"
+        name: 'foo',
+        email: 'test@user.com',
+        password: '123456',
       });
       const savedUser = await testUser.save();
       expect(savedUser.name).toEqual(testUser.name);
     });
   });
 
-  describe("Update user", () => {
-    it("updates a user", async () => {
+  describe('Update user', () => {
+    it('updates a user', async () => {
       const testUser = new User({
-        name: "foo",
-        email: "test@user.com",
-        password: "123456"
+        name: 'foo',
+        email: 'test@user.com',
+        password: '123456',
       });
       await testUser.save();
 
-      testUser.name = "bar";
+      testUser.name = 'bar';
       const updatedUser = await testUser.save();
-      expect(updatedUser.name).toEqual("bar");
+      expect(updatedUser.name).toEqual('bar');
     });
   });
 });
