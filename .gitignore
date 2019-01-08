@@ -2,6 +2,7 @@
 package-lock.json
 /config/keys_dev.js
 /config/keys_test.js
+/build/
 
 # Logs
 logs
