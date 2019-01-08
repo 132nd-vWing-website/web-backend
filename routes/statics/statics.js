@@ -1,19 +1,19 @@
-const express = require("express");
+const express = require('express');
 // const bcrypt = require("bcryptjs");
 // const jwt = require("jsonwebtoken");
 // const passport = require("passport");
 
 // Get keys
-const keys = require("../../config/keys");
 
-const SanityClient = require("@sanity/client")({
+const sanityImg = require('@sanity/image-url')(SanityClient);
+const keys = require('../../config/keys');
+
+const SanityClient = require('@sanity/client')({
   projectId: keys.sanityProjectID,
   dataset: keys.sanityDataset,
   token: keys.sanityToken,
-  useCdn: false
+  useCdn: false,
 });
-
-const sanityImg = require("@sanity/image-url")(SanityClient);
 
 // Initialize the router
 const router = express.Router();
@@ -21,21 +21,21 @@ const router = express.Router();
 // @route   GET docs/test
 // @desc    Tests the users route
 // @access  Public
-router.get("/test", (req, res) => res.json({ msg: "statics/test works!" }));
+router.get('/test', (req, res) => res.json({ msg: 'statics/test works!' }));
 
 // @route   GET docs/frontpagesliders
 // @desc    Returns all documents of type FrontpageSliders
 // @access  Public
-router.get("/frontpagesliders", (req, res) => {
+router.get('/frontpagesliders', (req, res) => {
   SanityClient.fetch(`*[_type == "frontpageslider"]`)
-    .then(docs => {
+    .then((docs) => {
       // Create a real URL for the background picture
-      docs.forEach(doc => {
+      docs.forEach((doc) => {
         doc.bg = sanityImg.image(doc.bg).url();
       });
 
       // Index the slides by their index value
-      let indexed = docs.sort((a, b) => {
+      const indexed = docs.sort((a, b) => {
         if (a.index > b.index) return 1;
         if (a.index < b.index) return -1;
         return 0;
@@ -44,7 +44,7 @@ router.get("/frontpagesliders", (req, res) => {
       // Return the modified doc items
       res.json(indexed);
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;

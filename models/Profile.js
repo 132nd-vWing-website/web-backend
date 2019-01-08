@@ -1,104 +1,106 @@
-const mongoose = require("mongoose");
-const Schema = mongoose.Schema;
+const mongoose = require('mongoose');
+
+// const Schema = mongoose.Schema;
+const { Schema } = mongoose;
 
 // Create Schema
 const ProfileSchema = new Schema({
   user: {
     type: Schema.Types.ObjectId,
-    ref: "users"
+    ref: 'users',
   },
   handle: {
     type: String,
     required: true,
-    max: 40
+    max: 40,
   },
   location: {
-    type: String
+    type: String,
   },
   status: {
     type: String,
-    required: true
+    required: true,
   },
   skills: {
-    type: [String]
+    type: [String],
   },
   bio: {
-    type: String
+    type: String,
   },
   githubusername: {
-    type: String
+    type: String,
   },
   unread: {
-    type: Array
+    type: Array,
   },
   experience: [
     {
       title: {
         type: String,
-        require: true
+        require: true,
       },
       company: {
-        type: String
+        type: String,
       },
       from: {
         type: Date,
-        require: true
+        require: true,
       },
       to: {
-        type: Date
+        type: Date,
       },
       current: {
         type: Boolean,
-        default: false
+        default: false,
       },
       description: {
-        type: String
-      }
-    }
+        type: String,
+      },
+    },
   ],
   education: [
     {
       school: {
         type: String,
-        require: true
+        require: true,
       },
       degree: {
-        type: String
+        type: String,
       },
       fieldofstudy: {
-        type: String
+        type: String,
       },
       from: {
         type: Date,
-        require: true
+        require: true,
       },
       to: {
-        type: Date
+        type: Date,
       },
       current: {
         type: Boolean,
-        default: false
+        default: false,
       },
       description: {
-        type: String
-      }
-    }
+        type: String,
+      },
+    },
   ],
   social: {
     youtube: {
-      type: String
+      type: String,
     },
     twitch: {
-      type: String
+      type: String,
     },
     twitter: {
-      type: String
-    }
+      type: String,
+    },
   },
   date: {
     type: Date,
-    default: Date.now
-  }
+    default: Date.now,
+  },
 });
 
-module.exports = mongoose.model("profile", ProfileSchema);
+module.exports = mongoose.model('profile', ProfileSchema);

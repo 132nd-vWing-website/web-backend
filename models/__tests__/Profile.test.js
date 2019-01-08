@@ -1,14 +1,19 @@
-const mongoose = require("mongoose");
+/* eslint no-undef: 0 */
+
+const mongoose = require('mongoose');
 
 // TestDB (Needs to be in your keys_dev.js!)
-const testDB = require("../config/keys_test").mongoURI;
+const testDB = require('../../config/keys_test').mongoURI;
 
-mongoose.connect(testDB, { useNewUrlParser: true });
+mongoose.connect(
+  testDB,
+  { useNewUrlParser: true },
+);
 
 // Schema
-const Profile = require("./Profile");
+const Profile = require('./../Profile');
 
-describe("User Model", () => {
+describe('User Model', () => {
   // Clear the test database schema before we start
   beforeAll(async () => {
     await Profile.remove({});
@@ -24,44 +29,44 @@ describe("User Model", () => {
     await mongoose.connection.close();
   });
 
-  it("has a model", () => {
+  it('has a model', () => {
     expect(Profile).toBeDefined();
   });
 
-  describe("Get profile", () => {
-    it("gets a profile", async () => {
+  describe('Get profile', () => {
+    it('gets a profile', async () => {
       const testProfile = new Profile({
-        handle: "foo",
-        status: "active"
+        handle: 'foo',
+        status: 'active',
       });
       await testProfile.save();
-      const foundUser = await Profile.findOne({ handle: "foo" });
+      const foundUser = await Profile.findOne({ handle: 'foo' });
       expect(foundUser.handle).toEqual(testProfile.handle);
     });
   });
 
-  describe("Save profile", () => {
-    it("saves a profile", async () => {
+  describe('Save profile', () => {
+    it('saves a profile', async () => {
       const testProfile = new Profile({
-        handle: "foo",
-        status: "active"
+        handle: 'foo',
+        status: 'active',
       });
       const savedProfile = await testProfile.save();
       expect(savedProfile.handle).toEqual(testProfile.handle);
     });
   });
 
-  describe("Update profile", () => {
-    it("updates a profile", async () => {
+  describe('Update profile', () => {
+    it('updates a profile', async () => {
       const testProfile = new Profile({
-        handle: "foo",
-        status: "active"
+        handle: 'foo',
+        status: 'active',
       });
       await testProfile.save();
 
-      testProfile.handle = "bar";
+      testProfile.handle = 'bar';
       const updatedProfile = await testProfile.save();
-      expect(updatedProfile.handle).toEqual("bar");
+      expect(updatedProfile.handle).toEqual('bar');
     });
   });
 });

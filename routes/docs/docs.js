@@ -1,16 +1,16 @@
-const express = require("express");
-const bcrypt = require("bcryptjs");
-const jwt = require("jsonwebtoken");
-const passport = require("passport");
+const express = require('express');
+// const bcrypt = require('bcryptjs');
+// const jwt = require('jsonwebtoken');
+// const passport = require('passport');
 
 // Get keys
-const keys = require("../../config/keys");
+const keys = require('../../config/keys');
 
-const SanityClient = require("@sanity/client")({
+const SanityClient = require('@sanity/client')({
   projectId: keys.sanityProjectID,
   dataset: keys.sanityDataset,
   token: keys.sanityToken,
-  useCdn: false
+  useCdn: false,
 });
 
 // Initialize the router
@@ -19,17 +19,17 @@ const router = express.Router();
 // @route   GET docs/test
 // @desc    Tests the users route
 // @access  Public
-router.get("/test", (req, res) => res.json({ msg: "docs/test works!" }));
+router.get('/test', (req, res) => res.json({ msg: 'docs/test works!' }));
 
 // @route   GET docs/endpoints
 // @desc    Returns all documents of type Endpoints
 // @access  Public
-router.get("/endpoints", (req, res) => {
+router.get('/endpoints', (req, res) => {
   SanityClient.fetch(`*[_type == "endpoint"]`)
-    .then(docs => {
+    .then((docs) => {
       res.json(docs);
     })
-    .catch(err => console.log(err));
+    .catch((err) => console.log(err));
 });
 
 module.exports = router;
