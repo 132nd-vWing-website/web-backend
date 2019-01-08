@@ -1,14 +1,12 @@
 const express = require('express');
-// const bcrypt = require("bcryptjs");
-// const jwt = require("jsonwebtoken");
-// const passport = require("passport");
+
+const SanityClient = require('@sanity/client');
+const sanityImg = require('@sanity/image-url')(SanityClient);
 
 // Get keys
-
-const sanityImg = require('@sanity/image-url')(SanityClient);
 const keys = require('../../config/keys');
 
-const SanityClient = require('@sanity/client')({
+SanityClient({
   projectId: keys.sanityProjectID,
   dataset: keys.sanityDataset,
   token: keys.sanityToken,
