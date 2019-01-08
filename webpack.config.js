@@ -11,7 +11,7 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: '[name].build.js',
+    filename: 'web-backend.build.js',
   },
   devtool: 'inline-source-map',
   devServer: {
