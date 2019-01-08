@@ -9,11 +9,11 @@ module.exports = {
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
-    debug: false
+    debug: false,
   },
   apiPort: process.env.PORT,
   secretOrKey: process.env.SECRET,
   sanityProjectID: process.env.SANITY_PROJECT_ID,
   sanityDataset: process.env.SANITY_DATASET,
-  sanityToken: process.env.SANITY_TOKEN
+  sanityToken: process.env.SANITY_TOKEN,
 };
