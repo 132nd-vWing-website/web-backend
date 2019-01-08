@@ -1,0 +1,11 @@
+{
+  "jsxSingleQuote": true,
+  "singleQuote": true,
+  "arrowParens": "always",
+  "eslintIntegration": true,
+  "endOfLine": "lf",
+  "trailingComma": "all",
+  "jsxBracketSameLine": true,
+  "printWidth": 100,
+  "semi": true
+}
