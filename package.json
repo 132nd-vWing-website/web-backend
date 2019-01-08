@@ -1,6 +1,6 @@
 {
-  "name": "api-service",
-  "version": "1.0.0",
+  "name": "web-backend",
+  "version": "0.1.0",
   "main": "server.js",
   "scripts": {
     "test": "jest --testPathIgnorePatterns models node_modules client .git --runInBand",
