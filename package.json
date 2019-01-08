@@ -11,7 +11,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/jkhoel/anzu-api"
+    "url": "git+https://github.com/132nd-vWing-website/web-backend"
   },
   "dependencies": {
     "@sanity/client": "^0.132.5",
