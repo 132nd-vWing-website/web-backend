@@ -6,7 +6,7 @@ const sanityImg = require('@sanity/image-url')(SanityClient);
 // Get keys
 const keys = require('../../config/keys');
 
-SanityClient({
+const sanityClient = SanityClient({
   projectId: keys.sanityProjectID,
   dataset: keys.sanityDataset,
   token: keys.sanityToken,
@@ -25,7 +25,8 @@ router.get('/test', (req, res) => res.json({ msg: 'statics/test works!' }));
 // @desc    Returns all documents of type FrontpageSliders
 // @access  Public
 router.get('/frontpagesliders', (req, res) => {
-  SanityClient.fetch(`*[_type == "frontpageslider"]`)
+  sanityClient
+    .fetch(`*[_type == "frontpageslider"]`)
     .then((docs) => {
       // Create a real URL for the background picture
       docs.forEach((doc) => {
