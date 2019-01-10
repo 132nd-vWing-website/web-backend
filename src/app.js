@@ -55,7 +55,7 @@ app.use('/api/v1/events', events);
 app.use('/docs/', docs);
 
 // Use route for Static page-content
-app.use('/statics/', statics);
+app.use('/api/v1/statics/', statics);
 
 // If we are in PRODUCTION - then we want to server our client build folder for all non-api calls
 if (process.env.NODE_ENV === 'production') {
