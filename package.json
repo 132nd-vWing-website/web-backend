@@ -22,8 +22,8 @@
     "url": "https://github.com/132nd-vWing-website/web-backend/issues"
   },
   "dependencies": {
-    "@sanity/client": "^0.132.5",
-    "@sanity/image-url": "^0.132.5",
+    "@sanity/client": "^0.132.10",
+    "@sanity/image-url": "^0.132.8",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",
     "concurrently": "^3.6.0",
