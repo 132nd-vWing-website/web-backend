@@ -62,6 +62,9 @@ if (process.env.NODE_ENV === 'production') {
   // Set static folder
   app.use(express.static('client/build'));
   app.get('*', (req, res) => {
+    /**
+     * IMPORTANT!! THIS WILL NEED TO POINT TO THE ACTUAL WEBCLIENT INDEX ON DEOPLYMENT! SEE https://tylermcginnis.com/react-router-cannot-get-url-refresh/
+     */
     res.sendFile(path.resolve(__dirname, 'client', 'build', 'index.html'));
   });
 }
