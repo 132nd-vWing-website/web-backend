@@ -1,47 +1,52 @@
-const Validator = require("validator");
-const isEmpty = require("./is-empty");
+const Validator = require('validator');
+const isEmpty = require('./is-empty');
 
 module.exports = function validateProfileInput(data) {
-  let errors = {};
+  const errors = {};
 
   // Ensure we have non-empty values for required fields, even if that value was not passed
-  data.handle = !isEmpty(data.handle) ? data.handle : "";
-  data.status = !isEmpty(data.status) ? data.status : "";
+  data.handle = !isEmpty(data.handle) ? data.handle : '';
+  data.callsign = !isEmpty(data.callsign) ? data.callsign : '';
+  data.status = !isEmpty(data.status) ? data.status : '';
 
   // Validation for required fields
   if (!Validator.isLength(data.handle, { min: 2, max: 40 })) {
-    errors.handle = "Handle needs to be between 2 and 40 characters";
+    errors.handle = 'Handle needs to be between 2 and 40 characters';
   }
 
   if (Validator.isEmpty(data.handle)) {
-    errors.handle = "Profile handle is required";
+    errors.handle = 'Profile handle is required';
+  }
+
+  if (Validator.isEmpty(data.callsign)) {
+    errors.callsign = 'A Callsign is required';
   }
 
   if (Validator.isEmpty(data.status)) {
-    errors.status = "Status field is required";
+    errors.status = 'Status field is required';
   }
 
   // Validation for non-required fields
   if (!isEmpty(data.youtube)) {
     if (!Validator.isURL(data.youtube)) {
-      errors.youtube = "Not a valid URL";
+      errors.youtube = 'Not a valid URL';
     }
   }
 
   if (!isEmpty(data.twitch)) {
     if (!Validator.isURL(data.twitch)) {
-      errors.twitch = "Not a valid URL";
+      errors.twitch = 'Not a valid URL';
     }
   }
 
   if (!isEmpty(data.twitter)) {
     if (!Validator.isURL(data.twitter)) {
-      errors.twitter = "Not a valid URL";
+      errors.twitter = 'Not a valid URL';
     }
   }
 
   return {
     isValid: isEmpty(errors),
-    errors
+    errors,
   };
 };
