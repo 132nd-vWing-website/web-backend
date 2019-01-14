@@ -9,6 +9,11 @@ const ProfileSchema = new Schema({
     type: Schema.Types.ObjectId,
     ref: 'users',
   },
+  callsign: {
+    type: String,
+    required: true,
+    max: 40,
+  },
   handle: {
     type: String,
     required: true,

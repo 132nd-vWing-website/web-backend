@@ -116,6 +116,7 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   // Get fields
   const profileFields = {};
   profileFields.user = req.user.id;
+  if (req.body.callsign) profileFields.callsign = req.body.callsign;
   if (req.body.handle) profileFields.handle = req.body.handle;
   if (req.body.location) profileFields.location = req.body.location;
   if (req.body.status) profileFields.status = req.body.status;
