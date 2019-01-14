@@ -11,7 +11,9 @@ const profile = require('../routes/api/profile');
 const posts = require('../routes/api/posts');
 const notams = require('../routes/api/notams');
 
+// MYSQL Routes
 const events = require('../routes/api/events');
+const usersSql = require('../routes/api/users-sql');
 
 const docs = require('../routes/docs/docs');
 const statics = require('../routes/statics/statics');
@@ -49,7 +51,9 @@ app.use('/api/v1/profile', profile);
 app.use('/api/v1/posts', posts);
 app.use('/api/v1/notams', notams);
 
+// SQL ready
 app.use('/api/v1/events', events);
+app.use('/api/v1/users-sql', usersSql);
 
 // Use route for Documentation
 app.use('/docs/', docs);
