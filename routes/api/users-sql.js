@@ -3,6 +3,10 @@ const passport = require('passport');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 
+// Load input validation
+const validateRegisterInput = require('../../validation/register');
+// const validateLoginInput = require('../../validation/login');
+
 // Initialize the router
 const router = express.Router();
 
@@ -20,6 +24,22 @@ const keys = require('../../config/keys');
 router.get('/test', (req, res) => res.json({ msg: 'Users SQL Work!' }));
 
 /**
+ * @route POST api/v1/users-sql/register
+ * @desc Register a new user
+ * @access Public
+ */
+router.post('/register', (req, res) => {
+  /* Check input validation */
+  const { errors, isValid } = validateRegisterInput(req.body);
+
+  if (!isValid) {
+    return res.status(400).json(errors);
+  }
+
+  return null;
+});
+
+/**
  * @route GET api/v1/users-sql/user
  * @desc Retrieves a spessific user
  * @access Private
@@ -31,7 +51,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Users SQL Work!' }));
 router.get('/user', passport.authenticate('jwt', { session: false }), (req, res) => {
   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: User ID not passed' });
 
-  const query = `SELECT * from user WHERE user_id=${req.query.id}`;
+  const query = `SELECT * from old_user WHERE user_id=${req.query.id}`;
   sql(query, (err, rows) => {
     if (err) res.json(err);
     res.json(rows);
