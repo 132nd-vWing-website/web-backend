@@ -36,6 +36,10 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   }
 
+  // Check if the email address has allready been used..
+
+  /** TODO: Probably rewrite sql() to provide a promise, taking a query as a parameter */
+
   return null;
 });
 
@@ -52,9 +56,9 @@ router.get('/user', passport.authenticate('jwt', { session: false }), (req, res)
   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: User ID not passed' });
 
   const query = `SELECT * from old_user WHERE user_id=${req.query.id}`;
-  sql(query, (err, rows) => {
-    if (err) res.json(err);
-    res.json(rows);
+  sql(query).then((data) => {
+    if (data.error) res.json(data);
+    res.json(data.rows);
   });
 });
 
