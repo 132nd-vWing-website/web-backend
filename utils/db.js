@@ -6,10 +6,11 @@ const credentials = require('../config/keys').mySQL;
 const dbPool = mysql.createPool(credentials);
 
 /**
+ * Promise-based MySQL query
  * @desc A helper function for handling DB connections to the SQL database
- * @param {*} req - This would be your DB query
- * @param {*} callback - Callback function - Pass in 'err' and 'rows'
+ * @param {string} req - This would be your sql query
  * @returns {object} - returns an object containing either error or rows
+ * @example sql(query).then(data => console.log(data))
  */
 module.exports = (req) =>
   new Promise((res) => {
