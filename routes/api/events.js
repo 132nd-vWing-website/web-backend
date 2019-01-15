@@ -41,9 +41,9 @@ router.get('/all', (req, res) => {
   if (req.query.desc !== 'false') desc = `ORDER BY event_id DESC`;
 
   const query = `SELECT * from event ${desc} ${limit}`;
-  sql(query, (err, rows) => {
-    if (err) res.json(err);
-    res.json(rows);
+  sql(query).then((data) => {
+    if (data.error) res.json(data);
+    res.json(data.rows);
   });
 });
 
@@ -52,7 +52,7 @@ router.get('/all', (req, res) => {
  * @desc Retrieves a spessific event based on the passed ID (as URL query)
  * @access Public
  *
- * @example localhost:5000/api/events/all?id=784
+ * @example localhost:5000/api/events/event?id=784
  *
  * @param {string} id - ID of event to return
  */
@@ -60,9 +60,9 @@ router.get('/event', (req, res) => {
   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: Event id not passed' });
 
   const query = `SELECT * from event WHERE event_id=${req.query.id}`;
-  sql(query, (err, rows) => {
-    if (err) res.json(err);
-    res.json(rows);
+  sql(query).then((data) => {
+    if (data.error) res.json(data);
+    res.json(data.rows);
   });
 });
 
@@ -83,13 +83,18 @@ router.get('/event/pilots', (req, res) => {
   let pilot = '';
   if (req.query.pilot) pilot = `AND b.user_id=${req.query.pilot}`;
 
-  const query = `SELECT a.nickname, b.* FROM user a, event_signup b WHERE a.user_id = b.user_id AND b.event_id=${
+  // const query = `SELECT a.nickname, b.* FROM user a, event_signup b WHERE a.user_id = b.user_id AND b.event_id=${
+  //   req.query.id
+  // } ${pilot}`;
+
+  /** TEMP REDIRECT TO OLD 132nd USER TABLE! */
+  const query = `SELECT a.nickname, b.* FROM old_user a, event_signup b WHERE a.user_id = b.user_id AND b.event_id=${
     req.query.id
   } ${pilot}`;
 
-  sql(query, (err, rows) => {
-    if (err) res.json(err);
-    res.json(rows);
+  sql(query).then((data) => {
+    if (data.error) res.json(data);
+    res.json(data.rows);
   });
 });
 
@@ -111,9 +116,13 @@ router.get('/pilots/flighthours', (req, res) => {
   let desc = '';
   if (req.query.desc !== 'false') desc = `ORDER BY flight_hours DESC`;
 
-  const query = `SELECT distinct a.user_id, a.nickname, (SELECT(SUM(b.aar_flighttime) / 60) FROM event_signup b WHERE b.user_id = a.user_id) AS flight_hours FROM user a ${pilot} ${desc}`;
-  sql(query, (err, rows) => {
-    res.json(rows);
+  // const query = `SELECT distinct a.user_id, a.nickname, (SELECT(SUM(b.aar_flighttime) / 60) FROM event_signup b WHERE b.user_id = a.user_id) AS flight_hours FROM user a ${pilot} ${desc}`;
+
+  /** TEMP REDIRECT TO OLD 132nd USER TABLE! */
+  const query = `SELECT distinct a.user_id, a.nickname, (SELECT(SUM(b.aar_flighttime) / 60) FROM event_signup b WHERE b.user_id = a.user_id) AS flight_hours FROM old_user a ${pilot} ${desc}`;
+  sql(query).then((data) => {
+    if (data.error) res.json(data);
+    res.json(data.rows);
   });
 });
 
