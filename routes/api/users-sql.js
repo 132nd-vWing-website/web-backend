@@ -1,7 +1,5 @@
 const express = require('express');
 const passport = require('passport');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
 
 // Load input validation
 const validateRegisterInput = require('../../validation/register');
@@ -12,9 +10,6 @@ const router = express.Router();
 
 // MySQL Connection
 const sql = require('../../utils/db');
-
-// Get keys
-const keys = require('../../config/keys');
 
 /**
  * @route GET api/v1/users-sql/test
