@@ -55,7 +55,6 @@ router.get('/mission', (req, res) => {
   }`;
 
   sql(query).then((data) => {
-    console.log(data);
     if (data.error) res.json(data);
     res.json(data.rows);
   });
