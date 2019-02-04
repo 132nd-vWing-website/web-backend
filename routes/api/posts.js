@@ -16,14 +16,59 @@ const validatePostInput = require('../../validation/posts');
 
 // ///////////////////////////////////////////////////////////////
 
-// @route   GET api/posts/test
-// @desc    Tests the posts route
-// @access  Public
+/* SEE http://apidocjs.com/ for parameters! */
+
+/**
+ * @apiversion 0.1.0
+ * @api {get} /api/v1/posts/test Test endpoint
+ * @apiName test-posts-public
+ * @apiGroup Posts (Public)
+ *
+ * @apiSuccess {string} metadata.msg as a string with an OK message
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       "msg": "Posts Works!"
+ *     }
+ */
 router.get('/test', (req, res) => res.json({ msg: 'Posts Works!' }));
 
-// @route   GET api/posts
-// @desc    Get posts
-// @access  Public
+/**
+ * @apiversion 0.1.0
+ * @api {get} /api/v1/posts/ Get all posts
+ * @apiName get-posts-public
+ * @apiGroup Posts (Public)
+ *
+ * @apiSuccess {array} metadata as array of objects, containing all posts
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *       [
+ *        {
+ *          "_id": "5b6f57c1cd0b100012cb4f71",
+ *          "type": "notam",
+ *          "title": "A notam #1",
+ *          "text": "Text here..",
+ *          "user": "5b462250c01a7e0d3c0f6323",
+ *          "likes": [],
+ *          "comments": [],
+ *          "date": "2018-08-11T21:40:17.248Z",
+ *          "__v": 0
+ *        },
+ *        {
+ *          "_id": "5b576d936dba280014b1d5a4",
+ *          "type": "notam",
+ *          "title": "Another Notam!",
+ *          "text": "Important text here...",
+ *          "user": "5b576c046dba280014b1d5a2",
+ *          "likes": [],
+ *          "comments": [],
+ *          "date": "2018-07-24T18:18:59.339Z",
+ *          "__v": 0
+ *        }
+ *       ]
+ *     }
+ */
 router.get('/', (req, res) => {
   Post.find()
     .sort({ date: -1 })
@@ -31,9 +76,15 @@ router.get('/', (req, res) => {
     .catch(() => res.status(404).json({ nopostfound: 'No posts found' }));
 });
 
-// @route   GET api/posts/:id
-// @desc    Get posts by id
-// @access  Public
+/**
+ * @apiversion 0.1.0
+ * @api {get} /api/v1/posts/:id Get posts by ID
+ * @apiName get-posts-by-id-public
+ * @apiGroup Posts (Public)
+ *
+ * @apiParam {string} id ID of post to retrieve
+ *
+ */
 router.get('/:id', (req, res) => {
   Post.findById(req.params.id)
     .then((posts) => res.json(posts))
@@ -43,6 +94,48 @@ router.get('/:id', (req, res) => {
 // @route   POST api/posts
 // @desc    Create post
 // @access  Private
+
+/**
+ * @name Posts: POST a new post
+ * @path {POST} api/v1/posts/
+ * @header {string} Authentication as 'Bearer token'
+ * @header {string} Content-Type as application/x-www-form-urlencoded
+ */
+
+/**
+ * @apiversion 0.1.0
+ * @api {post} /api/v1/posts/ Post a new posts
+ * @apiName post-post
+ * @apiGroup Posts (Private)
+ * @apiPrivate
+ *
+ * @apiHeader {String} Authentication as Bearer token
+ * @apiHeader {string} Content-Type as application/x-www-form-urlencoded*
+ * @apiHeaderExample {json} Header-Example:
+ *     {
+ *       "Authentication": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9...",
+ *       "Content-Type": "application/x-www-form-urlencoded"
+ *     }
+ *
+ *
+ *
+ * @apiSuccess {array} metadata.post Object the posts
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *        {
+ *          "_id": "5b6f57c1cd0b100012cb4f71",
+ *          "type": "notam",
+ *          "title": "A notam #1",
+ *          "text": "Text here..",
+ *          "user": "5b462250c01a7e0d3c0f6323",
+ *          "likes": [],
+ *          "comments": [],
+ *          "date": "2018-08-11T21:40:17.248Z",
+ *          "__v": 0
+ *        }
+ *     }
+ */
 router.post('/', passport.authenticate('jwt', { session: false }), (req, res) => {
   // Check validation
   const { errors, isValid } = validatePostInput(req.body);
@@ -65,9 +158,34 @@ router.post('/', passport.authenticate('jwt', { session: false }), (req, res) =>
   return null;
 });
 
-// @route   DELETE api/posts/:id
-// @desc    Delete a post
-// @access  Private
+/**
+ * @apiversion 0.1.0
+ * @api {delete} /api/v1/posts/:id Delete a post by ID
+ * @apiName get-posts-by-id-public
+ * @apiGroup Posts (Private)
+ * @apiPrivate
+ *
+ * @apiParam {string} id ID of post to retrieve
+ *
+ * @apiHeader {String} Authentication as Bearer token
+ *
+ * @apiSuccess {array} metadata.post as a post (object)
+ * @apiSuccessExample Success-Response:
+ *     HTTP/1.1 200 OK
+ *     {
+ *        {
+ *          "_id": "5b6f57c1cd0b100012cb4f71",
+ *          "type": "notam",
+ *          "title": "A notam #1",
+ *          "text": "Text here..",
+ *          "user": "5b462250c01a7e0d3c0f6323",
+ *          "likes": [],
+ *          "comments": [],
+ *          "date": "2018-08-11T21:40:17.248Z",
+ *          "__v": 0
+ *        }
+ *     }
+ */
 router.delete('/:id', passport.authenticate('jwt', { session: false }), (req, res) => {
   Profile.findOne({ user: req.user.id }).then(() => {
     Post.findById(req.params.id)
