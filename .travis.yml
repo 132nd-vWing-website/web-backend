@@ -1,0 +1,41 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - git checkout master
+  - git pull
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+after_success:
+  - git config --local user.name "$GIT_USER_NAME"
+  - git config --local user.email "$GIT_USER_EMAIL"
+  - git stash
+  - git checkout dev-live
+  - git stash pop
+  - git add ./build/server.build.js
+  - git commit
+# before_deploy:
+#   - git config --local user.name "$GIT_USER_NAME"
+#   - git config --local user.email "$GIT_USER_EMAIL"
+
+# deploy:
+#   provider: releases
+#   api_key: "$GH_TOKEN"
+#   file_glob: true
+#   file: _build/server.build.js
+#   skip_cleanup: true
+#   on:
+#     branch: master
+#     tags: true
+
+# after_deploy:
+#   - rm -rf _build
+#   - rm revision.tex
+
