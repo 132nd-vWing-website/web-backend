@@ -4,6 +4,9 @@ package-lock.json
 /config/keys_test.js
 /build/
 
+#PM2 ecosystem file
+ecosystem.config.js
+
 # Logs
 logs
 *.log
