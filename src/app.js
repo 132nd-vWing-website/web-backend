@@ -68,7 +68,7 @@ app.use('/api/v1/statics/', statics);
 // If we are in PRODUCTION - then we want to server our client build folder for all non-api calls
 // if (process.env.NODE_ENV === 'production') {
 // Set static folder
-app.use(express.static('build/public'));
+app.use(express.static('./www'));
 app.get('*', (req, res) => {
   /*
    * IMPORTANT!! THIS WILL NEED TO POINT TO THE ACTUAL WEBCLIENT INDEX ON DEOPLYMENT! SEE https://tylermcginnis.com/react-router-cannot-get-url-refresh/
