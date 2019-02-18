@@ -6,12 +6,13 @@ const path = require('path');
 // console.log('WEBPACK: ', versionString);
 
 module.exports = {
+  target: 'node',
   entry: {
     app: './server.js',
   },
   output: {
     path: path.resolve(__dirname, 'build'),
-    filename: 'web-backend.build.js',
+    filename: 'server.build.js',
   },
   devtool: 'inline-source-map',
   devServer: {
@@ -33,7 +34,8 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        // use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader'],
       },
     ],
   },
