@@ -19,15 +19,19 @@ module.exports = (req) =>
         res({ error: { code: 100, status: 'Error in connection to database' } });
       }
 
-      console.log(`MYSQL: Connected as id ${conn.threadId}`);
-      console.log('MYSQL QUERY: %s', req);
+      if (conn) {
+        console.log(`MYSQL: Connected as id ${conn.threadId}`);
+        console.log('MYSQL QUERY: %s', req);
 
-      conn.query(req, (_err, rows) => {
-        conn.release();
-        if (!_err) {
-          res({ rows });
-        }
-      });
+        conn.query(req, (_err, rows) => {
+          conn.release();
+          if (!_err) {
+            res({ rows });
+          }
+        });
+      } else {
+        console.log(`MYSQL: Connection failed!`);
+      }
     });
   });
 
