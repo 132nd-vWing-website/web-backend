@@ -15,7 +15,7 @@ const notams = require('../routes/api/notams');
 const events = require('../routes/api/events');
 const usersSql = require('../routes/api/users-sql');
 const missions = require('../routes/api/missions');
-const lists = require('../routes/api/lists');
+const airfields = require('../routes/api/airfields');
 
 const docs = require('../routes/docs/docs');
 const statics = require('../routes/statics/statics');
@@ -57,7 +57,7 @@ app.use('/api/v1/notams', notams);
 app.use('/api/v1/events', events);
 app.use('/api/v1/users-sql', usersSql);
 app.use('/api/v1/missions', missions);
-app.use('/api/v1/lists', lists);
+app.use('/api/v1/airfields', airfields);
 
 // Use route for Documentation
 app.use('/docs/', docs);
