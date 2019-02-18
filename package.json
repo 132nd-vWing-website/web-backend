@@ -7,6 +7,7 @@
     "test:watch": "jest --testPathIgnorePatterns models node_modules client .git --watchAll --runInBand",
     "test:models": "jest --testPathPattern models --watchAll",
     "start": "node server.js",
+    "prod": "nodemon ./build/server.build.js",
     "server": "nodemon server.js",
     "format": "prettier --write '**/*.{js,jsx}'",
     "dev": "webpack --watch --mode=development",
