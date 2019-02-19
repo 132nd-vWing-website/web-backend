@@ -22,4 +22,4 @@ script:
 
 after_success:
   - export SSHPASS=$DEPLOY_PASS
-  - sshpass -e scp $DEPLOY_SOURCE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
+  - sshpass -ev scp -v $DEPLOY_SOURCE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
