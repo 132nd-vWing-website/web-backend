@@ -1,0 +1,18 @@
+language: node_js
+cache:
+  directories:
+    - node_modules
+
+before_install:
+  - git checkout master
+  - git pull
+
+install:
+  - npm install
+
+script:
+  - npm run build
+
+after_success:
+  - export SSHPASS=$DEPLOY_PASS
+  - sshpass -e scp $DEPLOY_SOURCE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
