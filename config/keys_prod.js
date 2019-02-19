@@ -9,7 +9,7 @@ module.exports = {
     user: process.env.MYSQL_USER,
     password: process.env.MYSQL_PASSWORD,
     database: process.env.MYSQL_DATABASE,
-    debug: true,
+    debug: false,
   },
   apiPort: process.env.PORT,
   secretOrKey: process.env.SECRET,
