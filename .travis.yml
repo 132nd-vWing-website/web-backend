@@ -3,18 +3,14 @@ node_js:
   - '8'
 
 sudo: required
-# dist: trusty
+dist: trusty
 before_install:
   - sudo apt-get -qq update
-  - sudo apt-get install sshpass
+  - sudo apt-get install sshpass -y
 
 cache:
   directories:
     - node_modules
-
-# before_install:
-#   - git checkout master
-#   - git pull
 
 install:
   - npm install
@@ -22,6 +18,7 @@ install:
 script:
   - npm audit fix
   - npm run build
+  - ls -la
 
 after_success:
   - export SSHPASS=$DEPLOY_PASS
