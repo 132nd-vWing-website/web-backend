@@ -4,6 +4,11 @@ node_js:
 
 sudo: required
 dist: trusty
+
+addons:
+  ssh_known_hosts:
+    - $DEPLOY_HOST
+
 before_install:
   - sudo apt-get -qq update
   - sudo apt-get install sshpass -y
