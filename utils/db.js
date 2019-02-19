@@ -30,7 +30,7 @@ module.exports = (req) =>
           }
         });
       } else {
-        console.log('==> MYSQL: Connection failed!', credentials, conn);
+        console.log('==> MYSQL: Connection failed!', err);
       }
     });
   });
