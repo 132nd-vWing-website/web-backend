@@ -22,7 +22,7 @@ install:
 
 script:
   - npm audit fix
-  - npm run build
+  - npm run build:dev
   - ls -la
 
 after_success:
