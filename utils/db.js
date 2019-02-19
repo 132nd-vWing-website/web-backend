@@ -30,34 +30,9 @@ module.exports = (req) =>
           }
         });
       } else {
-        console.log('MYSQL: Connection failed!', credentials, conn);
+        console.log('==> MYSQL: Connection failed!', credentials, conn);
         console.log('Credentials: ', credentials);
         console.log('conn: ', conn);
       }
     });
   });
-
-/** OLD CODE! */
-// module.exports = (req, callback) => {
-//   dbPool.getConnection((err, conn) => {
-//     if (err) {
-//       callback({ code: 100, status: 'Error in connection database' }, null);
-//       return;
-//     }
-
-//     console.log(`MYSQL: Connected as id ${conn.threadId}`);
-
-//     console.log('MYSQL QUERY: %s', req);
-
-//     conn.query(req, (_err, rows) => {
-//       conn.release();
-//       if (!_err) {
-//         callback(null, rows);
-//       }
-//     });
-
-//     conn.on('error', () => {
-//       callback({ code: 100, status: 'Error in connection database' }, null);
-//     });
-//   });
-// };
