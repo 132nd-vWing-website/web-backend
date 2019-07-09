@@ -2,6 +2,26 @@
 
 This node+express application will serve the client web app with information via a REST API. Othe applications can also access the data by passing having an authenticated user.
 
+### Scripts
+
+Create a full production build:
+
+```
+npm run build
+```
+
+Create a development build, with additional debugging features enabled:
+
+```
+npm run build:dev
+```
+
+After perfomin any two of the above, run the command below to run your build
+
+```
+npm start
+```
+
 ### Dev deployment:
 
 Make sure you have origin set to
