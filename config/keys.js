@@ -4,6 +4,5 @@ if (process.env.NODE_ENV === 'production') {
 } else if (process.env.NODE_ENV === 'test') {
   module.exports = require('./keys_test');
 } else {
-  // module.exports = require('./keys_dev');
-  module.exports = require('./keys_prod');
+  module.exports = require('./keys_dev');
 }
