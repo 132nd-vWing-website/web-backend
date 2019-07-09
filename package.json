@@ -1,18 +1,15 @@
 {
   "name": "web-backend",
   "version": "0.1.0",
-  "main": "server.js",
+  "private": true,
   "scripts": {
     "start": "node ./build/server.build.js",
-    "test": "jest --testPathIgnorePatterns models node_modules client .git --runInBand",
-    "test:watch": "jest --testPathIgnorePatterns models node_modules client .git --watchAll --runInBand",
-    "test:models": "jest --testPathPattern models --watchAll",
-    "server": "nodemon server.js",
-    "format": "prettier --write '**/*.{js,jsx}'",
-    "dev": "webpack --watch --mode=development",
+    "dev": "nodemon server.js",
     "build": "webpack --mode=production",
     "build:dev": "webpack --mode=development",
-    "babel": "babel ./server.js -d build"
+    "test": "jest --testPathIgnorePatterns models node_modules client .git --runInBand",
+    "test:watch": "jest --testPathIgnorePatterns models node_modules client .git --watchAll --runInBand",
+    "test:models": "jest --testPathPattern models --watchAll"
   },
   "repository": {
     "type": "git",
@@ -52,8 +49,8 @@
     "jest": "^24.8.0",
     "prettier": "^1.16.4",
     "supertest": "^3.4.2",
-    "webpack": "^4.29.5",
-    "webpack-cli": "^3.2.3"
+    "webpack": "^4.35.3",
+    "webpack-cli": "^3.3.5"
   },
   "jest": {
     "testURL": "http://localhost/",
