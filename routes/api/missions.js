@@ -18,7 +18,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Missions Work!' }));
  * @desc Retrieves all missions. Option to pass limit (defaults to 50) and desc (defaults to true) as URL query strings
  * @access Public
  *
- * @example localhost:5000/api/missions/all?limit=100&desc=false
+ * @example localhost:5000/api/v1/missions/all?limit=100&desc=false
  *
  * @param {string} limit - Number of records to return
  * @param {bool} desc - List will be returned sorted by DESC unless this is false
@@ -50,9 +50,7 @@ router.get('/all', (req, res) => {
 router.get('/mission', (req, res) => {
   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: Mission id not passed' });
 
-  const query = `SELECT a.*, b.* FROM msn a JOIN msn_briefing b ON b.msn_id = a.msn_id WHERE a.msn_id=${
-    req.query.id
-  }`;
+  const query = `SELECT a.*, b.* FROM msn a JOIN msn_briefing b ON b.msn_id = a.msn_id WHERE a.msn_id=${req.query.id}`;
 
   sql(query).then((data) => {
     if (data.error) res.json(data);
