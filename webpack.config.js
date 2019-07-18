@@ -21,6 +21,15 @@ module.exports = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  optimization: {
+    minimizer: [
+      new UglifyJsPlugin({
+        uglifyOptions: {
+          mangle: false
+        },
+      })
+    ],
+  },
   module: {
     rules: [
       {
