@@ -57,12 +57,11 @@ router.get('/', (req, res) => {
   const query = `SELECT inventory FROM warehouse WHERE warehouse_id=${req.query.id}`;
 
   sql(query).then((data) => {
-    console.log(data)
+    console.log(data);
     if (data.error) res.json(data);
     // Should probably add some checking here, to see that we actually get some data returned
     res.json(JSON.parse(data.rows[0].inventory));
     // res.json(data.rows);
-
   });
 });
 
@@ -87,11 +86,11 @@ router.get('/', (req, res) => {
 });
 
 /**
- * @route POST api/v1/warehouse/inventory?id=12
+ * @route POST api/v1/warehouse/?id=12
  * @desc POSTS a new inventory JSON object to a specific warehouse, given the warehouse ID passed as URL query
  * @access Public
  */
-router.post('/inventory', (req, res) => {
+router.post('/', (req, res) => {
   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: Warehouse ID not passed' });
 
   /* Check input validation */
