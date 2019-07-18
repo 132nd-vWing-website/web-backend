@@ -57,7 +57,9 @@ router.get('/', (req, res) => {
   const query = `SELECT inventory FROM warehouse WHERE warehouse_id=${req.query.id}`;
 
   sql(query).then((data) => {
+    console.log(data)
     if (data.error) res.json(data);
+    // Should probably add some checking here, to see that we actually get some data returned
     res.json(JSON.parse(data.rows[0].inventory));
     // res.json(data.rows);
 

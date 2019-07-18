@@ -5,7 +5,7 @@ const passport = require('passport');
 
 const path = require('path');
 
-// Routes
+// MongoDB Routes
 const users = require('../routes/api/users');
 const profile = require('../routes/api/profile');
 const posts = require('../routes/api/posts');
@@ -18,6 +18,7 @@ const missions = require('../routes/api/missions');
 const airfields = require('../routes/api/airfields');
 const warehouse = require('../routes/api/warehouse');
 
+// Static Routes
 const docs = require('../routes/docs/docs');
 const statics = require('../routes/statics/statics');
 
@@ -45,13 +46,13 @@ app.use(passport.initialize());
 // Passport Configs
 require('../config/passport')(passport);
 
-// MongoDB API Routes
+// MongoDB API End-points
 // app.use('/api/v1/users', users);
 // app.use('/api/v1/profile', profile);
 // app.use('/api/v1/posts', posts);
 // app.use('/api/v1/notams', notams);
 
-// SQL API Routes
+// SQL API End-points
 app.use('/api/v1/events', events);
 app.use('/api/v1/users-sql', usersSql);
 app.use('/api/v1/missions', missions);
