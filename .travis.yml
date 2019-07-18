@@ -26,4 +26,5 @@ script:
   - ls -la
 
 after_success:
+  - sshpass -p $DEPLOY_PASS ls -lah
   - sshpass -p $DEPLOY_PASS scp -vo stricthostkeychecking=no $DEPLOY_SOURCE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
