@@ -50,7 +50,8 @@ router.get('/all', (req, res) => {
  *
  * @param {string} id - ID of mission to return
  */
-router.get('/inventory', (req, res) => {
+// router.get('/inventory', (req, res) => {
+router.get('/', (req, res) => {
   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: Warehouse ID not passed' });
 
   const query = `SELECT inventory FROM warehouse WHERE warehouse_id=${req.query.id}`;
@@ -58,6 +59,8 @@ router.get('/inventory', (req, res) => {
   sql(query).then((data) => {
     if (data.error) res.json(data);
     res.json(JSON.parse(data.rows[0].inventory));
+    // res.json(data.rows);
+
   });
 });
 
@@ -66,20 +69,20 @@ router.get('/inventory', (req, res) => {
  * @desc Retrieves a spessific warehouse inventory, given the event ID passed as URL query
  * @access Public
  *
- * @example localhost:5000/api/warehouse/event?id=115
+ * @example localhost:5000/api/warehouse/?event=115
  *
  * @param {string} id - ID of mission to return
  */
-// router.get('/event', (req, res) => {
-//   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: Event ID not passed' });
+router.get('/', (req, res) => {
+  if (!req.query.event) res.json({ code: 400, status: 'Bad Request: Event ID not passed' });
 
-//   const query = `SELECT CAST(inventory AS JSON) FROM warehouse WHERE event_id=${req.query.id}`;
+  const query = `SELECT CAST(inventory AS JSON) FROM warehouse WHERE event_id=${req.query.event}`;
 
-//   sql(query).then((data) => {
-//     if (data.error) res.json(data);
-//     res.json(data.rows);
-//   });
-// });
+  sql(query).then((data) => {
+    if (data.error) res.json(data);
+    res.json(data.rows);
+  });
+});
 
 /**
  * @route POST api/v1/warehouse/inventory?id=12
