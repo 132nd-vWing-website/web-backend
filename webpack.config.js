@@ -5,18 +5,19 @@ const path = require('path');
 // const versionString = childProcess.execSync('git rev-list HEAD --count').toString();
 // console.log('WEBPACK: ', versionString);
 
+let _DEVTOOL;
+if (process.env.NODE_ENV === 'development') {
+  _DEVTOOL = 'inline-source-map';
+}
+
 module.exports = {
-  entry: {
-    app: './server.js',
-  },
+  target: 'node',
+  entry: './server.js',
   output: {
+    filename: 'server.build.js',
     path: path.resolve(__dirname, 'build'),
-    filename: 'web-backend.build.js',
   },
-  devtool: 'inline-source-map',
-  devServer: {
-    contentBase: './dist',
-  },
+  devtool: _DEVTOOL,
   resolve: {
     extensions: ['.js', '.jsx'],
   },
@@ -33,7 +34,8 @@ module.exports = {
       {
         test: /\.js$/,
         exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader'],
+        // use: ['babel-loader', 'eslint-loader'],
+        use: ['babel-loader'],
       },
     ],
   },

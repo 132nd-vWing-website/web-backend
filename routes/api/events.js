@@ -60,9 +60,7 @@ router.get('/event', (req, res) => {
   if (!req.query.id) res.json({ code: 400, status: 'Bad Request: Event id not passed' });
 
   /* The query joins together three tables; event, msn and msn_briefing! */
-  const query = `SELECT a.*, b.*, c.* FROM event a JOIN msn b ON b.msn_id = a.msn_id JOIN msn_briefing c ON c.msn_id = a.msn_id WHERE a.event_id=${
-    req.query.id
-  }`;
+  const query = `SELECT a.*, b.*, c.* FROM event a JOIN msn b ON b.msn_id = a.msn_id JOIN msn_briefing c ON c.msn_id = a.msn_id WHERE a.event_id=${req.query.id}`;
 
   sql(query).then((data) => {
     if (data.error) res.json(data);
@@ -92,9 +90,7 @@ router.get('/event/pilots', (req, res) => {
   // } ${pilot}`;
 
   /** TEMP REDIRECT TO OLD 132nd USER TABLE! */
-  const query = `SELECT a.nickname, b.* FROM old_user a, event_signup b WHERE a.user_id = b.user_id AND b.event_id=${
-    req.query.id
-  } ${pilot}`;
+  const query = `SELECT a.nickname, b.* FROM old_user a, event_signup b WHERE a.user_id = b.user_id AND b.event_id=${req.query.id} ${pilot}`;
 
   sql(query).then((data) => {
     if (data.error) res.json(data);

@@ -16,6 +16,7 @@ const events = require('../routes/api/events');
 const usersSql = require('../routes/api/users-sql');
 const missions = require('../routes/api/missions');
 const airfields = require('../routes/api/airfields');
+const warehouse = require('../routes/api/warehouse');
 
 const docs = require('../routes/docs/docs');
 const statics = require('../routes/statics/statics');
@@ -32,13 +33,10 @@ const db = require('../config/keys').mongoURI;
 
 // Connect to MongoDB
 mongoose
-  .connect(
-    db,
-    {
-      // Options
-      useNewUrlParser: true,
-    },
-  )
+  .connect(db, {
+    // Options
+    useNewUrlParser: true,
+  })
   .catch((err) => console.log('!!! %s', err));
 
 // Passport middleware
@@ -58,6 +56,7 @@ app.use('/api/v1/events', events);
 app.use('/api/v1/users-sql', usersSql);
 app.use('/api/v1/missions', missions);
 app.use('/api/v1/airfields', airfields);
+app.use('/api/v1/warehouse', warehouse);
 
 // Use route for Documentation
 app.use('/docs/', docs);
@@ -68,12 +67,13 @@ app.use('/api/v1/statics/', statics);
 // If we are in PRODUCTION - then we want to server our client build folder for all non-api calls
 // if (process.env.NODE_ENV === 'production') {
 // Set static folder
-app.use(express.static('build/public'));
+app.use(express.static('./www'));
 app.get('*', (req, res) => {
   /*
    * IMPORTANT!! THIS WILL NEED TO POINT TO THE ACTUAL WEBCLIENT INDEX ON DEOPLYMENT! SEE https://tylermcginnis.com/react-router-cannot-get-url-refresh/
    */
-  res.sendFile(path.resolve(__dirname, 'build', 'public', 'index.html'));
+  // res.sendFile(path.resolve(__dirname, 'build', 'public', 'index.html'));
+  res.sendFile(path.resolve(__dirname, '../www', 'index.html'));
 });
 // }
 

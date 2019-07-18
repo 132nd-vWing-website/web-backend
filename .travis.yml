@@ -1,0 +1,29 @@
+language: node_js
+node_js:
+  - '8'
+
+sudo: required
+dist: trusty
+
+addons:
+  ssh_known_hosts:
+    - $DEPLOY_HOST
+
+before_install:
+  - sudo apt-get -qq update
+  - sudo apt-get install sshpass -y
+
+cache:
+  directories:
+    - node_modules
+
+install:
+  - npm install
+
+script:
+  - npm audit fix
+  - npm run $DEPLOY_SCRIPT_NAME
+  - ls -la
+
+after_success:
+  - sshpass -p $DEPLOY_PASS scp -vo stricthostkeychecking=no $DEPLOY_SOURCE $DEPLOY_USER@$DEPLOY_HOST:$DEPLOY_PATH
