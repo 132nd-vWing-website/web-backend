@@ -45,13 +45,13 @@ app.use(passport.initialize());
 // Passport Configs
 require('../config/passport')(passport);
 
-// Use API Routes
-app.use('/api/v1/users', users);
-app.use('/api/v1/profile', profile);
-app.use('/api/v1/posts', posts);
-app.use('/api/v1/notams', notams);
+// MongoDB API Routes
+// app.use('/api/v1/users', users);
+// app.use('/api/v1/profile', profile);
+// app.use('/api/v1/posts', posts);
+// app.use('/api/v1/notams', notams);
 
-// SQL ready
+// SQL API Routes
 app.use('/api/v1/events', events);
 app.use('/api/v1/users-sql', usersSql);
 app.use('/api/v1/missions', missions);
@@ -59,10 +59,10 @@ app.use('/api/v1/airfields', airfields);
 app.use('/api/v1/warehouse', warehouse);
 
 // Use route for Documentation
-app.use('/docs/', docs);
+// app.use('/docs/', docs);
 
 // Use route for Static page-content
-app.use('/api/v1/statics/', statics);
+// app.use('/api/v1/statics/', statics);
 
 // If we are in PRODUCTION - then we want to server our client build folder for all non-api calls
 // if (process.env.NODE_ENV === 'production') {
