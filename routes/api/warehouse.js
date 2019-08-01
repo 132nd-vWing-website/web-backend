@@ -67,29 +67,6 @@ router.get('/:id', (req, res) => {
 });
 
 /**
- * @route GET api/warehouse/:id/:item
- * @desc Retrieves a spessific item from a warehouse, given the warehouse ID and item name as parameter
- * @access Public
- *
- * @example localhost:5000/api/warehouse/1/jp5
- *
- * @param {string} id - ID of warehouse to return
- * @param {string} item - Name of warehouse item to return
- *
- */
-router.get('/:id/:item', (req, res) => {
-  const item = req.params.item.toUpperCase();
-
-  const query = `SELECT inventory -> '$.${item}' as ${item} FROM warehouse WHERE warehouse_id=${req.params.id}`;
-
-  sql(query).then((data) => {
-    if (data.error) res.json(data);
-    res.json(data.rows);
-  });
-  console.log(req.params);
-});
-
-/**
  * @route POST api/v1/warehouse/:id
  * @desc POSTS a new inventory JSON object to a specific warehouse, given the warehouse ID as parameter
  * @access Public
@@ -110,6 +87,29 @@ router.post('/:id', (req, res) => {
   });
 
   return null;
+});
+
+/**
+ * @route GET api/warehouse/:id/:item
+ * @desc Retrieves a spessific item from a warehouse, given the warehouse ID and item name as parameter
+ * @access Public
+ *
+ * @example localhost:5000/api/warehouse/1/jp5
+ *
+ * @param {string} id - ID of warehouse to return
+ * @param {string} item - Name of warehouse item to return
+ *
+ */
+router.get('/:id/:item', (req, res) => {
+  const item = req.params.item.toUpperCase();
+
+  const query = `SELECT inventory -> '$.${item}' as ${item} FROM warehouse WHERE warehouse_id=${req.params.id}`;
+
+  sql(query).then((data) => {
+    if (data.error) res.json(data);
+    res.json(data.rows);
+  });
+  console.log(req.params);
 });
 
 module.exports = router;

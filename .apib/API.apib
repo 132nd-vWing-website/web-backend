@@ -1,0 +1,76 @@
+FORMAT: 1A
+HOST: http://client.tnd.today/api/v1
+
+# 132nd Web API
+Welcome to the 132nd Web API. This API provides access to all available 132nd Web services.
+
+# Group Air Tasking Order
+Resources in this group is related to the *Air Tasking Order* (ATO).
+
+## Mission [/ato/missions]
+
+### Get all Mission Types [GET]
+Returns all the available mission types and their attributes
+
++ Response 200 (application/json)
+
+        [
+            {
+                "type_id": 26,
+                "type_name": "Training Sortie",
+                "type_shortname": "TR",
+                "type_identifier": "TR"
+            },
+            {
+                "type_id": 25,
+                "type_name": "Target Combat Air Patrol",
+                "type_shortname": "TARCAP",
+                "type_identifier": "TC"
+            },
+            ...
+        ]
+
+# Group Warehouse
+This group holds all the data for warehouses in missions
+
+## Warehouse [/warehouse/{warehouse_id}]
+
++ Parameters
+    + warehouse_id (number) - ID of the warehouse to retrieve
+
+### Get Warehouse Stock [GET]
+Returns the stock of a particular warehouse
+
++ Response 200 (application/json)
+
+            {
+                "JP5": 97.82,
+                "Mk-82": 100,
+                "Mk-84": 100,
+                "AIM-7M": 100,
+                "AIM-9L": 100,
+                "AIM-9M": 100,
+                ...
+            }
+
+### Update Warehouse Stock [POST]
+Update a particular warehouse stock
+
++ Response 204
+
+## Warehouse Item [/warehouse/{warehouse_id}/{item_name}]
+
++ Parameters
+    + warehouse_id (number) - ID of the warehouse to retrieve
+    + item_name (string) - Name of warehouse item to return
+
+### Get Item in Stock [GET]
+Returns the quantity of a particular item in a particular warehouse
+
++ Response 200 (application/json)
+
+            [
+                {
+                    "JP5": "97.82"
+                }
+            ]

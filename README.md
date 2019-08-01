@@ -2,6 +2,13 @@
 
 This node+express application will serve the client web app with information via a REST API. Othe applications can also access the data by passing having an authenticated user.
 
+- [132nd Web Backend](#132nd-web-backend)
+    - [Scripts](#scripts)
+    - [Dev deployment:](#dev-deployment)
+  - [Documentation](#documentation)
+    - [How To Update Docs:](#how-to-update-docs)
+  - [Post-Receive Hook](#post-receive-hook)
+
 ### Scripts
 
 Create a full production build:
@@ -36,6 +43,23 @@ Resources:
 [Set up deployment via GIT](https://www.digitalocean.com/community/tutorials/how-to-set-up-automatic-deployment-with-git-with-a-vps)
 
 [Set up a NodeJS application for production](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04)
+
+## Documentation
+
+The documentation for this repo is written according to the [API Blueprint](https://apiblueprint.org) spec
+
+And uses [Snowboard](https://github.com/bukalapak/snowboard) for parsing and rendering.
+
+### How To Update Docs:
+Install Snowboard
+```
+$ npm install -g snowboard
+```
+
+Then make sure you are in the project root folder and run
+```
+$ snowboard html -o ./www ./.apib/API.apib
+```
 
 ## Post-Receive Hook
 
