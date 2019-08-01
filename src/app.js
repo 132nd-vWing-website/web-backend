@@ -17,10 +17,11 @@ const usersSql = require('../routes/api/users-sql');
 const missions = require('../routes/api/missions');
 const airfields = require('../routes/api/airfields');
 const warehouse = require('../routes/api/warehouse');
+const ato = require('../routes/api/ato');
 
 // Static Routes
-const docs = require('../routes/docs/docs');
-const statics = require('../routes/statics/statics');
+// const docs = require('../routes/docs/docs');
+// const statics = require('../routes/statics/statics');
 
 // Initialize the server
 const app = express();
@@ -58,6 +59,7 @@ app.use('/api/v1/users-sql', usersSql);
 app.use('/api/v1/missions', missions);
 app.use('/api/v1/airfields', airfields);
 app.use('/api/v1/warehouse', warehouse);
+app.use('/api/v1/ato', ato);
 
 // Use route for Documentation
 // app.use('/docs/', docs);
