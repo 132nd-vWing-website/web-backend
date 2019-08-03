@@ -67,17 +67,19 @@ app.use('/api/v1/ato', ato);
 // Use route for Static page-content
 // app.use('/api/v1/statics/', statics);
 
-// If we are in PRODUCTION - then we want to server our client build folder for all non-api calls
-// if (process.env.NODE_ENV === 'production') {
-// Set static folder
-app.use(express.static('./www'));
-app.get('*', (req, res) => {
-  /*
-   * IMPORTANT!! THIS WILL NEED TO POINT TO THE ACTUAL WEBCLIENT INDEX ON DEOPLYMENT! SEE https://tylermcginnis.com/react-router-cannot-get-url-refresh/
-   */
-  // res.sendFile(path.resolve(__dirname, 'build', 'public', 'index.html'));
-  res.sendFile(path.resolve(__dirname, '../www', 'index.html'));
-});
-// }
+// Serve API Documentation for any non-resolvable route
+if (process.env.NODE_ENV === 'production') {
+  // Production Setup
+  app.use(express.static('./www'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, './www', 'index.html'));
+  });
+} else {
+  // Development Setup
+  app.use(express.static('../www'));
+  app.get('*', (req, res) => {
+    res.sendFile(path.resolve(__dirname, '../www', 'index.html'));
+  });
+}
 
 module.exports = app;
