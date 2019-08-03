@@ -4,9 +4,9 @@ This node+express application will serve the client web app with information via
 
 - [132nd Web Backend](#132nd-web-backend)
     - [Scripts](#scripts)
-    - [Dev deployment:](#dev-deployment)
+    - [Dev deployment](#dev-deployment)
   - [Documentation](#documentation)
-    - [How To Update Docs:](#how-to-update-docs)
+    - [How To Update Docs](#how-to-update-docs)
   - [Post-Receive Hook](#post-receive-hook)
 
 ### Scripts
@@ -29,7 +29,7 @@ After perfomin any two of the above, run the command below to run your build
 npm start
 ```
 
-### Dev deployment:
+### Dev deployment
 
 Make sure you have origin set to
 
@@ -46,11 +46,9 @@ Resources:
 
 ## Documentation
 
-The documentation for this repo is written according to the [API Blueprint](https://apiblueprint.org) spec
+The documentation for this repo is written according to the [API Blueprint](https://apiblueprint.org) spec, and uses [Snowboard](https://github.com/bukalapak/snowboard) for parsing and rendering.
 
-And uses [Snowboard](https://github.com/bukalapak/snowboard) for parsing and rendering.
-
-### How To Update Docs:
+### How To Update Docs
 Install Snowboard
 ```
 $ npm install -g snowboard
@@ -58,7 +56,7 @@ $ npm install -g snowboard
 
 Then make sure you are in the project root folder and run
 ```
-$ snowboard html -o ./www ./.apib/API.apib
+$ snowboard html -o ./www ./.apib/index.apib
 ```
 
 ## Post-Receive Hook
