@@ -68,3 +68,7 @@ typings/
 
 # next.js build output
 .next
+
+# dev env (WSL)
+CUsersJensAppDataRoamingnpm/bin/snowboard
+CUsersJensAppDataRoamingnpm/bin/serve
