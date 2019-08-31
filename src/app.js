@@ -67,19 +67,10 @@ app.use('/api/v1/ato', ato);
 // Use route for Static page-content
 // app.use('/api/v1/statics/', statics);
 
-// Serve API Documentation for any non-resolvable route
-if (process.env.NODE_ENV === 'production') {
-  // Production Setup
-  app.use(express.static('./www'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, './www', 'index.html'));
-  });
-} else {
-  // Development Setup
-  app.use(express.static('../www'));
-  app.get('*', (req, res) => {
-    res.sendFile(path.resolve(__dirname, '../www', 'index.html'));
-  });
-}
+// Serve API Documentation for any non-resolvable route - NOTE! Only works in production
+app.use(express.static('./www'));
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(__dirname, './www', 'index.html'));
+});
 
 module.exports = app;
