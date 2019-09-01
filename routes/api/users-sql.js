@@ -13,14 +13,14 @@ const router = express.Router();
 const sql = require('../../utils/db');
 
 /**
- * @route GET api/v1/users-sql/test
+ * @route GET api/v1/users/test
  * @desc Tests the events route
  * @access Public
  */
 router.get('/test', (req, res) => res.json({ msg: 'Users SQL Work!' }));
 
 /**
- * @route POST api/v1/users-sql/register
+ * @route POST api/v1/users/register
  * @desc Register a new user
  * @access Public
  */
@@ -38,7 +38,7 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  // Check if the email address has allready been used..
+  // TODO: Check if the email address has allready been used..
 
   // If not, create a new user model..
   const newUser = {
@@ -55,24 +55,25 @@ router.post('/register', (req, res) => {
       if (_err) throw _err;
       newUser.password = hash;
 
-      // save user to db
-
-      // return some data
-      return res.status(200).json(newUser);
+      // .. save user to db
+      const query = `INSERT INTO user (name, password, email, avatar) VALUES ('${newUser.name}', '${newUser.password}', '${newUser.email}', '${newUser.avatar}')`;
+      sql(query).then((data) => {
+        if (data.error) res.status(400).json(data);
+        res.status(200).json(data.rows);
+        console.log(data);
+      });
     });
   });
-
-  /** TODO: Probably rewrite sql() to provide a promise, taking a query as a parameter */
 
   return null;
 });
 
 /**
- * @route GET api/v1/users-sql/user
+ * @route GET api/v1/users/user
  * @desc Retrieves a spessific user
  * @access Private
  *
- * @example localhost:5000/api/v1/users-sql/user?id=784
+ * @example localhost:5000/api/v1/users/user?id=784
  *
  * @param {string} id - User ID
  */
