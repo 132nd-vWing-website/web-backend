@@ -55,7 +55,7 @@ require('../config/passport')(passport);
 
 // SQL API End-points
 app.use('/api/v1/events', events);
-app.use('/api/v1/users-sql', usersSql);
+app.use('/api/v1/users', usersSql);
 app.use('/api/v1/missions', missions);
 app.use('/api/v1/airfields', airfields);
 app.use('/api/v1/warehouse', warehouse);
