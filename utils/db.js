@@ -20,6 +20,7 @@ module.exports = (req) =>
       }
 
       if (conn) {
+        console.log(`MYSQL: HOST: ${credentials.host}`);
         console.log(`MYSQL: Connected as id ${conn.threadId}`);
         console.log('MYSQL QUERY: %s', req);
 
