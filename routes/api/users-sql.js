@@ -56,7 +56,7 @@ router.post('/register', (req, res) => {
       newUser.password = hash;
 
       // .. save user to db
-      const query = `INSERT INTO user (name, password, email, avatar) VALUES ('${newUser.name}', '${newUser.password}', '${newUser.email}', '${newUser.avatar}')`;
+      const query = `INSERT INTO users (name, password, email, avatar) VALUES ('${newUser.name}', '${newUser.password}', '${newUser.email}', '${newUser.avatar}')`;
       sql(query).then((data) => {
         if (data.error) res.status(400).json(data);
         res.status(200).json(data.rows);
