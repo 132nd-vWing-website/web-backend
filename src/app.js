@@ -6,10 +6,9 @@ const passport = require('passport');
 const path = require('path');
 
 // MongoDB Routes
-const users = require('../routes/api/users');
-const profile = require('../routes/api/profile');
-const posts = require('../routes/api/posts');
-const notams = require('../routes/api/notams');
+// const profile = require('../routes/api/profile');
+// const posts = require('../routes/api/posts');
+// const notams = require('../routes/api/notams');
 
 // MYSQL Routes
 const events = require('../routes/api/events');
@@ -48,7 +47,6 @@ app.use(passport.initialize());
 require('../config/passport')(passport);
 
 // MongoDB API End-points
-// app.use('/api/v1/users', users);
 // app.use('/api/v1/profile', profile);
 // app.use('/api/v1/posts', posts);
 // app.use('/api/v1/notams', notams);
