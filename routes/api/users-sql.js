@@ -42,7 +42,14 @@ router.post('/register', (req, res) => {
     return res.status(400).json(errors);
   }
 
-  // TODO: Check if the email address has allready been used..
+  // Check if the email address has allready been used..
+  sql(`SELECT EXISTS(SELECT * FROM users WHERE email='${req.body.email}');`).then(({ rows }) => {
+    const accountsFound = Object.values(rows[0])[0];
+    if (accountsFound > 0)
+      return res.status(400).json({
+        email: 'Email is allready registered to an account',
+      });
+  });
 
   // If not, create a new user model..
   const newUser = {
