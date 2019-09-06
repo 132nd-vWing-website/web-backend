@@ -31,7 +31,7 @@ router.get('/test', (req, res) => res.json({ msg: 'Users SQL Work!' }));
 router.post('/register', (req, res) => {
   /* Check input validation */
   const { errors, isValid } = validateRegisterInput({
-    name: req.body.name,
+    callsign: req.body.callsign,
     email: req.body.email,
     password: req.body.password,
     password2: req.body.password2,
@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
 
   // If not, create a new user model..
   const newUser = {
-    name: req.body.name,
+    callsign: req.body.callsign,
     email: req.body.email,
     password: req.body.password,
     avatar: '',
@@ -62,7 +62,7 @@ router.post('/register', (req, res) => {
       console.log('Password Hash: %s', hash);
 
       // .. save user to db
-      const query = `INSERT INTO users (name, password, email, avatar) VALUES ('${newUser.name}', '${newUser.password}', '${newUser.email}', '${newUser.avatar}')`;
+      const query = `INSERT INTO users (callsign, password, email, avatar) VALUES ('${newUser.callsign}', '${newUser.password}', '${newUser.email}', '${newUser.avatar}')`;
       sql(query).then((data) => {
         if (data.error) res.status(400).json(data);
         res.status(200).json(data.rows);
@@ -109,7 +109,7 @@ router.post('/login', (req, res) => {
         // ... user matched! - Create JWT Payload
         const payload = {
           id: user.id,
-          name: user.name,
+          callsign: user.callsign,
           avatar: user.avatar,
           roles: user.roles,
         };
@@ -150,7 +150,7 @@ router.post('/login', (req, res) => {
 router.get('/current', passport.authenticate('jwt', { session: false }), (req, res) => {
   res.json({
     id: req.user.id,
-    name: req.user.name,
+    callsign: req.user.callsign,
     email: req.user.email,
     avatar: req.user.avatar,
     roles: req.user.roles,

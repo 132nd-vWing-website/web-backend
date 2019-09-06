@@ -5,18 +5,18 @@ module.exports = function validateRegisterInput(data) {
   const errors = {};
 
   // Ensure we have non-empty values for required fields, even if that value was not passed
-  data.name = !isEmpty(data.name) ? data.name : '';
+  data.callsign = !isEmpty(data.callsign) ? data.callsign : '';
   data.email = !isEmpty(data.email) ? data.email : '';
   data.password = !isEmpty(data.password) ? data.password : '';
   data.password2 = !isEmpty(data.password2) ? data.password2 : '';
 
-  // Testing:Name
-  if (!Validator.isLength(data.name, { min: 2, max: 30 })) {
-    errors.name = 'Name must be between 2 and 30 characters';
+  // Testing:Callsign
+  if (!Validator.isLength(data.callsign, { min: 2, max: 30 })) {
+    errors.callsign = 'Callsign must be between 2 and 30 characters';
   }
 
-  if (Validator.isEmpty(data.name)) {
-    errors.name = 'Name field is required';
+  if (Validator.isEmpty(data.callsign)) {
+    errors.callsign = 'Callsign field is required';
   }
 
   // Testing:Email
