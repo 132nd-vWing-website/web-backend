@@ -59,13 +59,12 @@ router.route('/upload').post(
     }
 
     // Create and save resized versions of the Image
-    const fileUpload = new Resize(filePath);
-    const { filename, filepath } = await fileUpload.save(req.file.buffer);
+    new Resize(filePath).save(req.file.buffer).then((imageData) =>
+      // TODO: there should be a database registry storing file name, path and author in the SQL database also!
 
-    // TODO: there should be a database registry storing file name, path and author in the SQL database also!
-
-    // Return some information to the client
-    return res.status(200).json({ fileName: filename, filePath: filepath });
+      // Return some information to the client
+      res.status(200).json({ fileName: imageData.filename, filePath: imageData.filepath }),
+    );
   },
 );
 
