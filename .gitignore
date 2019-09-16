@@ -70,7 +70,7 @@ typings/
 .next
 
 # Filestorage
-uploads/
+static/
 
 # dev env (WSL)
 CUsersJensAppDataRoamingnpm/bin/snowboard
