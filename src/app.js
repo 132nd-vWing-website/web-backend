@@ -19,9 +19,8 @@ const airfields = require('../routes/api/airfields');
 const warehouse = require('../routes/api/warehouse');
 const ato = require('../routes/api/ato');
 
-// Static Routes
-// const docs = require('../routes/docs/docs');
-// const statics = require('../routes/statics/statics');
+// Functions
+const image = require('../routes/functions/image');
 
 // Initialize the server
 const app = express();
@@ -61,16 +60,18 @@ app.use('/api/v1/airfields', airfields);
 app.use('/api/v1/warehouse', warehouse);
 app.use('/api/v1/ato', ato);
 
-// Use route for Documentation
-// app.use('/docs/', docs);
+// Function Endpoints
+app.use('/api/v1/image/', image);
 
-// Use route for Static page-content
-// app.use('/api/v1/statics/', statics);
+// Serve static files (uploaded images etc..)
+app.use('/static', express.static('./static'));
 
 // Serve API Documentation for any non-resolvable route - NOTE! Only works in production
 app.use(express.static('./www'));
-app.get('*', (req, res) => {
-  res.sendFile(path.resolve(__dirname, './www', 'index.html'));
-});
+
+// TODO - delete this..?
+// app.get('*', (req, res) => {
+//   res.sendFile(path.resolve(__dirname, './www', 'index.html'));
+// });
 
 module.exports = app;
