@@ -14,7 +14,8 @@
     "release:major": "release major",
     "release:minor": "release minor",
     "release:patch": "release patch",
-    "release:pre": "release pre"
+    "release:pre": "release pre",
+    "release:help": "release help"
   },
   "repository": {
     "type": "git",
