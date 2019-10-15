@@ -1,6 +1,6 @@
 {
   "name": "web-backend",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "private": true,
   "scripts": {
     "start": "node ./build/server.build.js",
@@ -10,7 +10,11 @@
     "test": "jest --testPathIgnorePatterns models node_modules client .git --runInBand",
     "test:watch": "jest --testPathIgnorePatterns models node_modules client .git --watchAll --runInBand",
     "test:models": "jest --testPathPattern models --watchAll",
-    "docs:build": "snowboard html -o www ./.apib/index.apib"
+    "docs:build": "snowboard html -o www ./.apib/index.apib",
+    "release:major": "release major",
+    "release:minor": "release minor",
+    "release:patch": "release patch",
+    "release:rc": "release pre rc"
   },
   "repository": {
     "type": "git",
@@ -34,6 +38,7 @@
     "nodemon": "^1.18.10",
     "passport": "^0.4.0",
     "passport-jwt": "^4.0.0",
+    "release": "^6.1.0",
     "sharp": "^0.23.0",
     "uuid": "^3.3.3",
     "validator": "^10.11.0"
