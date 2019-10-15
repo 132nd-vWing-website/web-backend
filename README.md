@@ -44,9 +44,49 @@ Resources:
 
 [Set up a NodeJS application for production](https://www.digitalocean.com/community/tutorials/how-to-set-up-a-node-js-application-for-production-on-ubuntu-16-04)
 
+### Commits and Releases
+
+All commits should be one of three types:
+- `new`: A new feature or addition
+- `change`: A cheange to an existing feature or addition
+- `fix`: A fix for a certain posted issue or bug
+- `ignore`: A commit that will not appear on the changelog
+
+Example commit message:
+`(change) Updated README.md to reflect new changes in information`
+
+## Releases
+
+*The below scripts have to be executed in a LINUX or WSL environment in order to work!*
+
+The following scripts are included for creating releases via [Release](https://github.com/zeit/release)
+
+Major: Incompatible API changes were introduced:
+```
+$ npm run release:major
+```
+
+Minor: Functionality was added in a backwards-compatible manner
+```
+$ npm run release:minor
+```
+
+Patch: Backwards-compatible bug fixes were applied
+```
+$ npm run release:patch
+```
+
+Pre-releases
+```
+$ npm run release:pre
+```
+
+
 ## Documentation
 
 The documentation for this repo is written according to the [API Blueprint](https://apiblueprint.org) spec, and uses [Snowboard](https://github.com/bukalapak/snowboard) for parsing and rendering.
+
+*Note that Snowboard will have to be run in a Linux or WSL environment to work!*
 
 ### How To Update Docs
 Install Snowboard
