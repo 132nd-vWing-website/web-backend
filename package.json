@@ -1,6 +1,6 @@
 {
   "name": "web-backend",
-  "version": "2.0.1",
+  "version": "2.0.1-canary.0",
   "private": true,
   "scripts": {
     "start": "node ./build/server.build.js",
@@ -14,7 +14,7 @@
     "release:major": "release major",
     "release:minor": "release minor",
     "release:patch": "release patch",
-    "release:rc": "release pre rc"
+    "release:pre": "release pre"
   },
   "repository": {
     "type": "git",
